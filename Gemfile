@@ -9,10 +9,11 @@ gem 'mysql'
 gem 'ruby-mysql'
 gem 'devise'
 gem 'rails3-generators'
-gem 'json'
-gem 'weibo', '0.0.2'
-gem 'oauth'
-gem 'sinatra'
+gem "sinatra"
+gem "oauth"
+gem "json"
+gem "weibo", '0.0.11'
+gem 'delayed_job', '2.1.4'
 
 
 # Gems used only for assets and not required
