@@ -98,12 +98,13 @@ class Jobsmessage
   def initialize(strm,strimage)
     @@mstr = strm
     @@imagestr = strimage
-    webc.deliver 
+    uploadmessage.deliver 
   end
   def uploadmessage
     oauth = Weibo::OAuth.new(Weibo::Config.api_key, Weibo::Config.api_secret)
     oauth.authorize_from_access("11d3f4ba88c23cb0ff2e15dd0ab1d1fc","763739c2df44939b7caa41f0b9a00506")
     Weibo::Base.new(oauth).upload(CGI::escape(@@mstr),File.new("D:\\test\\social-web\\public\\" + @@imagestr ,"rb"))
+    #Weibo::Base.new(oauth).upload(CGI::escape(@@mstr),File.new(File.join(Rails.root.to_s, 'public', @@imagestr) ,"rb"))
   end
   
   def updatemessage
