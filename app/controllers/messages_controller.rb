@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
       @imgf = ""
     end
     
-    @strmessage = UploadMessage.find(:all)
+    @strmessage = UploadMessage.find(:all, :conditions => "isselected=1", :order => "id desc")
   end
   
   def upload
@@ -100,11 +100,18 @@ class Jobsmessage
     @@imagestr = strimage
     webc.deliver 
   end
-  def webc
+  def uploadmessage
     oauth = Weibo::OAuth.new(Weibo::Config.api_key, Weibo::Config.api_secret)
     oauth.authorize_from_access("11d3f4ba88c23cb0ff2e15dd0ab1d1fc","763739c2df44939b7caa41f0b9a00506")
     Weibo::Base.new(oauth).upload(CGI::escape(@@mstr),File.new("D:\\test\\social-web\\public\\" + @@imagestr ,"rb"))
   end
+  
+  def updatemessage
+    oauth = Weibo::OAuth.new(Weibo::Config.api_key, Weibo::Config.api_secret)
+    oauth.authorize_from_access("11d3f4ba88c23cb0ff2e15dd0ab1d1fc","763739c2df44939b7caa41f0b9a00506")
+    Weibo::Base.new(oauth).update(@@mstr)
+  end
+  
   def perform
     webc.deliver
   end
