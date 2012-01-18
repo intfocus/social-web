@@ -7,15 +7,19 @@ $(document).ready(function(){
 	  var txtmessage = $("#uploadmess").val();
 	  var imgfile = $("#imagefile").html();
 	  var txtimage = "";
+	  var strhost = window.location.host;
+	  var strprotocol = window.location.protocol;
+	  var strurl = strprotocol + "//" + strhost + "/messages/save_update"
 	  $.ajax({
 			type: 'POST',
-			url: 'http://192.168.186.134:3000/messages/save_update',
+			//url: 'http://192.168.186.134:3000/messages/save_update',
+			url: strurl,
 			data: {"strmes":txtmessage,"strimg":imgfile,"strupt":"" },
 			contentType: 'multipart/form-data',
 			datatype: 'json',
 			success:function(data)
 			{
-				alert("ok");
+				alert(data);
 				location.reload();
 			},
 			error:function(xhr,r,e)
@@ -84,13 +88,17 @@ $(document).ready(function(){
     });
     str = str.substring(0,str.length-1)
     alert(str);
+    var strhost = window.location.host;
+	var strprotocol = window.location.protocol;
+	var strurl = strprotocol + "//" + strhost + "/messages/save_update"
     $.ajax({
 			type: 'POST',
-			url: 'http://192.168.186.134:3000/messages/save_update',
+			//url: 'http://192.168.186.134:3000/messages/save_update',
+			url: strurl,
 			data: {"strid":str},
 			success:function(data)
 			{
-				//alert("ok");
+				alert(data);
 				location.reload();
 			},
 			error:function(xhr,r,e)
