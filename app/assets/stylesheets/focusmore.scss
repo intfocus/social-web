@@ -1,0 +1,131 @@
+/* Focusmore.scss
+ * Other format all in here. By Albert 20111229
+ * ---------------------------------------------------------------------------------------- */
+// Layout
+// ---------
+
+.stream-manager {
+  z-index: 1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+#page-outer {
+  width: 1000px;
+  padding-top: 60px;
+  _padding-top: 20px;
+  margin: 0 auto;
+}
+.main-content {
+  @include border-radius(5px);
+  @include box-shadow(0 1px 2px rgba(0,0,0,.5));
+  border-right:1px\9 solid #eee;
+  position:relative;
+  background:#fff;
+  display: inline;
+  float: left;
+  height:100%;
+  min-height:700px;
+  z-index: 3;
+  @include clearfix();
+}
+.dashboard{
+  width:300px;
+  background: rgba(218, 236, 244, 0.9);
+  position:relative;
+  padding:12px 20px;
+  padding-right:18px\9;
+  padding-left:18px\9;
+  display: inline;
+  float: left;
+  z-index: 1;
+  @include clearfix();
+}
+#details-pane-outer {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  top: 45px;
+  width: 100%;
+  _position: static;
+  _width: 620px;
+  _float: left;
+  _display: inline-block;
+}
+.details-pane-shell {
+  position: relative;
+  width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  _position: static;
+  _width: 320px;
+  _padding: 0;
+  _margin: 0;
+}
+.details-pane .inner-pane {
+  height:100%;
+  margin-left:10px;
+}
+
+.details-pane {
+  background: white;
+  position: relative;
+  left: 10px;
+  top: 0;
+  max-width: 400px;
+  min-width: 300px;
+  @include border-radius(6px);
+  @include box-shadow(0 2px 2px rgba(0,0,0,.3));
+  display: none;
+  overflow: hidden;
+  _position: static;
+  _width: 320px;
+  > .pane-components-inner {
+    background-color:#FFF;
+  }
+}
+.pane-components {
+  overflow-y:auto;
+  position:relative;
+}
+.pane-toolbar {
+  background:#f4f4f4;
+  @include border-radius(5px);
+  border-top-right-radius:5px;
+  margin-left:-10px;
+  padding:6px 10px 6px 20px;
+  > .toolbar-control {
+    color:#999 !important;
+    font-size:12px;
+    outline:none;
+  }
+  > .pane-back {
+    font-weight:400;
+    font-size:12px;
+    margin-left:8px;
+  }
+  a span {
+    color:#888;
+    margin-top:2px;
+    font:bold 14px Tahoma,Arial,sans-serif;
+  }
+  a.pane-close {
+    float:right;
+    text-decoration:none;
+  }
+  a.pane-close span {
+    padding-left:4px;
+  }
+  hr {
+    margin:5px 20px 0;
+  }
+}
+.details-pane-tweet {
+  padding-top:14px;
+  padding-bottom:4px;
+  background:#fff;
+}
+
