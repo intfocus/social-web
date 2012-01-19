@@ -1,0 +1,9 @@
+development:
+  api_key: 2942145647
+  api_secret: 5cc0026c470a25a6070237e07ade5f27
+test``:
+  api_key: 2942145647
+  api_secret: 5cc0026c470a25a6070237e07ade5f27
+production:
+  api_key: 2942145647
+  api_secret: 5cc0026c470a25a6070237e07ade5f27

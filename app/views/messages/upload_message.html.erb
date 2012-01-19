@@ -1,0 +1,74 @@
+<%= javascript_include_tag "/javascripts/libs/jquery-1.7.1.min.js" %>
+<%= javascript_include_tag "/javascripts/Main.js" %>
+<%= javascript_include_tag "/javascripts/upload.js" %>
+<%= stylesheet_link_tag    "/stylesheets/upload.css" %>
+<br />
+<br />
+<br />
+<br />
+<div>
+	<ul>
+		<li>
+			<textarea rows="3" cols="40" id="uploadmess" ></textarea>
+		</li>
+	    <li>
+		    <%=link_to "文件上传","/messages/img_message"%><p id="imagefile"><%=@imgf%></p>
+	    </li>
+	</ul>
+</div>
+<div>
+	<ul>
+		<li>
+			<div id="clock4"></div>
+		</li>
+		<li>
+			<input type="text" id="clock1" value="间隔时间为：5分钟" />
+		</li>
+	</ul>
+</div>
+
+<div id="check_all">
+	<ul>
+	  <li>
+	  	<input type="checkbox" name="cb_all" id="cb_all" checked="true" />是否全选
+	  </li>
+	  <li>
+	  	<input type="button" id="btn5" value="获得没选中的所有值">
+	  </li>
+	</ul>
+</div>
+<div id="txtmessage">
+	<% @strmessage.each do |strmes| %>
+	<div>
+		<ul>
+			<li>
+				<input type='checkbox' name='checkbox' checked='true' value='<%=h strmes.id %>'>
+			</li>
+			<li>
+				<div class='feed-content' id='eventReply' rel='pl:'>
+					<p class='feed-main'>
+						<%=h strmes.message %>
+	                </p>
+	            </div>
+	        </li>
+	        <% if strmes.image != "" && strmes.image != nil then %>
+	        <li>
+	        	<div>
+	        		<p><%=h strmes.image.split.join('').to_s %></p>
+	        	  <img width='50' height='50' src='/<%= strmes.image %>' />
+	        	</div>
+	        </li>
+	        <% end %>
+	        <% if strmes.uploadtime != "" && strmes.uploadtime != nil then %>
+	        <li>
+	        	<div>
+	        		<p class="feed-main">
+	        			<%=h (strmes.uploadtime+8*60*60).strftime("%Y年%m月%d日  %H:%M:%S") %>
+	        		</p>
+	        	</div>
+	        </li>
+	        <% end %>
+	    </ul>
+	</div>
+	<% end %>
+</div>

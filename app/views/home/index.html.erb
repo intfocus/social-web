@@ -1,2 +1,9 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+<% if session[:atoken] %>
+    <p>11111111</p>
+	<p><%= @session1 %></p>
+	<p><%= @session2 %></p>
+<% else %>
+    <p>22222222</p>
+<% end %>
