@@ -36,8 +36,16 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
+  gem 'rspec'
+end
+
+group :development do
+  # Rspec
+  gem 'rspec'
 end
 
 require 'v8'
 gem 'execjs'
 gem 'therubyracer'
+gem 'lazy_high_charts', '~> 1.1.5' 
+gem 'delayed_job', '2.1.4'

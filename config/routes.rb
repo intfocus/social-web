@@ -2,6 +2,9 @@ SocialWeb::Application.routes.draw do
   devise_for :users
 
   get "home/index"
+# get "timelines/index"
+  match ':controller(/:action(/:id(.:format)))'
+
   root :to => "home#index"
 
   # The priority is based upon order of creation:
