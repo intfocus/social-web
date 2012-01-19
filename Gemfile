@@ -5,10 +5,15 @@ gem 'rails', '3.1.3'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'mysql'
 gem 'ruby-mysql'
 gem 'devise'
 gem 'rails3-generators'
+gem "sinatra"
+gem "oauth"
+gem "json"
+gem "weibo", '0.0.11'
+gem 'delayed_job', '2.1.4'
 
 
 # Gems used only for assets and not required
@@ -37,7 +42,3 @@ group :test do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
 end
-
-require 'v8'
-gem 'execjs'
-gem 'therubyracer'

@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>SocialWeb</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    :all %>
+  <%= javascript_include_tag :all %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -17,8 +17,12 @@
     <%= link_to "Sign up", new_user_registration_path %> or    
     <%= link_to "Sign in", new_user_session_path %>    
   <% end %>    
-</div> 
+</div>
+<% if session[:atoken] %>
+  <a href="/home/logout">logout</a>
+<% else %>
+  <a href="/home/connect">connect</a>
+<% end %> 
 <%= yield %>
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 </body>
 </html>

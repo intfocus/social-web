@@ -1,0 +1,6 @@
+<div>
+  <%=form_tag "/weibosw/upload",:multipart => true do %>
+  <%=file_field_tag(:img,:size=>"40") %>
+      <%= submit_tag("上传文件") %>
+  <% end %>
+</div>
