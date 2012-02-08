@@ -178,40 +178,37 @@ class TimelineController < ApplicationController
   def new
     
   end
+  
   def get_pane
-    @html='<div class="details-pane-shell">
-    <div class="details-pane opened" style="height: 585px; width: 380px; display: block; left: 530px; -webkit-transition-property: none; ">
-      
-    <div class="inner-pane active">
-  <div class="pane-toolbar pane-built-in">
-          <a class="pane-close toolbar-control" href="#">close <span>x</span></a>
-    <br style="clear: both">
-  </div>
-  <div class="pane-components" style="height: 554px; ">
-    <div class="pane-components-inner tweet-components">
-    <div class="component"><div class="conversation">
-  <div class="related-tweets" data-related-impression-id="" data-related-group-name="" data-related-annotations="">
-          <div class="conversation-last-ancestor-tweet">
-  <div class="stream-item js-stream-item">
-  <div class="more">?</div>
-  <div class="js-stream-tweet js-actionable-tweet stream-item-content tweet stream-tweet simple-tweet favorited " data-tweet-id="145733997463474176" data-item-id="145733997463474176" data-screen-name="LihaoAlbert" data-user-id="425849117">
-    <div class="tweet-dogear"></div>
-    <div class="tweet-image simple-tweet-image">
-        <img height="32" width="32" src="https://twimg0-a.akamaihd.net/sticky/default_profile_images/default_profile_1_normal.png" alt="intfocus Albert" class="user-profile-link" data-user-id="425849117">
-    </div>
-    <div class="tweet-content simple-tweet-content">
-      <div class="tweet-row">
-        <span class="tweet-user-name">
-  <a class="tweet-screen-name user-profile-link js-action-profile-name" data-user-id="425849117" href="/#!/LihaoAlbert" title="intfocus Albert">LihaoAlbert</a>
-  <span class="tweet-full-name">intfocus Albert</span>
-  </span>
-        <div class="tweet-corner">
-          <div class="tweet-meta">
-  <span class="icons">
-    <div class="extra-icons">
-              <span class="inlinemedia-icons js-icon-container"></span>
-        </div>
-  </span>
-</div>'
+    respond_to do |format|
+      format.html { render :layout => false } #:layout => false 设置不使用页面框架
+    end
   end
+  
+  def user_detail
+      if user_signed_in?
+        @userid = current_user.id
+      else
+        @userid = 1
+      end
+      @userkey = Userkey.find(@userid)
+      $txtkey1 = @userkey.key1
+      $txtkey2 = @userkey.key2
+    struserid = params[:struserid].to_i
+    if(struserid == nil || struserid == "") then
+      @strmessage=""
+    else
+      oauth = Weibo::OAuth.new(Weibo::Config.api_key, Weibo::Config.api_secret)
+      #oauth.authorize_from_access("11d3f4ba88c23cb0ff2e15dd0ab1d1fc","763739c2df44939b7caa41f0b9a00506")
+      oauth.authorize_from_access($txtkey1,$txtkey2)
+      @strmessage=Weibo::Base.new(oauth).user(struserid)
+    end
+
+    respond_to do |format|
+      format.html { render :layout => false } #:layout => false 设置不使用页面框架
+      format.json  { render :json => @strmessage }
+    end
+  end
+
+  
 end

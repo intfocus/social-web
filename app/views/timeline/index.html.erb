@@ -6,17 +6,7 @@
             <div class="stream-content">
 	            <h2>Main content</h2>
 	            <a href="#" class="btn danger" rel="popover"  data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A title">text</a>
-	            <script>
-	            $(function () {
-	              $("a[rel=popover]")
-	                .popover({
-	                  offset: 10
-	                })
-	                .click(function(e) {
-	                  e.preventDefault()
-	                })
-	            })
-	          </script>
+
 	            <p>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">bootstrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</p>
 
 		<!--   Alert   -->
@@ -68,9 +58,15 @@
           </div>
          <!--   details pane   --> 
           <div id="details-pane-outer">
-			  <div class="details-pane-shell">
-			    <div class="details-pane" style="height: 876px; width: 920px; ">
-			      
+			    <div class="details-pane-shell">
+              <div class="details-pane" id="details-pane" style="display: none; height: 585px; width: 350px; left: 593px; margin-top: 15px; -webkit-transition-property: none; ">
+    <div class="inner-pane active">
+				  <div class="pane-toolbar pane-built-in">
+				          <a class="pane-close toolbar-control " rel="pane_close" href="#">关闭 <span>×</span></a>
+				    <br style="clear: both">
+				  </div>
+					  <div id="pane-load">
+					  </div>
 			    </div>
 			  </div>
 			</div>
@@ -78,16 +74,24 @@
 	            $(function () {
 	              $("a[rel=details_pane]")
 	                .click(function(e) {
-	                  $("#details-pane-outer").load("http://10.10.10.10:3000/timeline/get_pane")
+	                  $("#details-pane").css("display","block");
+	                  	$(document).ready(function(){
+								$("#details-pane").css("height",$(window).height() - 60);
+							});
+	                  $("#pane-load").load("/timeline/get_pane");
 	                })
-	            })
+	            });
 	            $(function () {
 	              $("a[rel=pane_close]")
 	                .click(function(e) {
-	                  $("#details-pane").css("display","none")
+	                  $("#details-pane").css("display","none");
 	                })
-	            })
-	          </script>
-
+	            });
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#details-pane").css("height",$(window).height() - 60);
+	})
+</script>
 			<!--   details pane  end --> 
 </div>

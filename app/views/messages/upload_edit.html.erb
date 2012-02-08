@@ -1,0 +1,62 @@
+<%= javascript_include_tag "/javascripts/libs/jquery-1.7.1.min.js" %>
+<%= javascript_include_tag "/javascripts/Main.js" %>
+<%= javascript_include_tag "/javascripts/upload_edit.js" %>
+<%= stylesheet_link_tag    "/stylesheets/upload.css" %>
+<input type="hidden" id="txtid" value="<%=h @txtid %>">
+<div>
+	<ul>
+		<li>微博内容：</li><br /><br />
+		<li>
+			<textarea rows="3" cols="40" id="updatemessage" ><%=h @txtmessage %></textarea>
+		</li>
+	    <%if @imgf != "" && @imgf != nil %>
+		<li>上传图片：</li>
+		<li><img id="txtimgf" width='50' height='50' src='/<%=h @imgf %>' /></li>
+		<% end %>
+		<li>修改上传图片：</li>
+	    <li>
+		    <%=link_to "文件上传","/messages/img_message"%><p id="imagefile"><%=@imgf%></p>
+	    </li>
+	    <li>
+			<select id="send_state">
+				<% if @txtisselected == 3 %>
+				<option value="3" selected="true">入库</option>
+				<% else %>
+				<option value="3">入库</option>
+				<% end %>
+				<% if @txtisselected == 2 %>
+				<option value="2" selected="true">定时</option>
+                <% else %>
+				<option value="2">定时</option>
+				<% end %>
+				<% if @txtisselected == 1 %>
+				<option value="1" selected="true">即时</option>
+				<% else %>
+				<option value="1">即时</option>
+				<% end %>
+				<% if @txtisselected == 4 %>
+				<option value="4" selected="true">监控</option>
+				<% else %>
+				<option value="4">监控</option>
+				<% end %>
+			</select>
+		</li>
+	</ul>
+</div>
+<div id="dDeltxt" style="display: <%=h @txtisselected == 2? '':'none' %>">
+	<ul>
+		<li>
+			<div id="clock4"></div>
+		</li>
+		<li>
+			间隔时间为：<input type="text" id="txtclock" value="5" />分钟
+		</li>
+	</ul>
+</div>
+<div id="txtmessage">
+	<ul>
+		<li>
+			<input type="button" id="save_update" value="保  存" />
+		</li>
+	</ul>
+</div>

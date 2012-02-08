@@ -496,7 +496,7 @@ footer {
 // ------------
 
 .page-header {
-  margin-bottom: $baseline - 1;
+  //margin-bottom: $baseline - 1;
   border-bottom: 1px solid #ddd;
   @include box-shadow(0 1px 0 rgba(255,255,255,.5));
   h1 {

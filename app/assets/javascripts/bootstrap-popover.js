@@ -88,3 +88,13 @@
   $.fn.twipsy.rejectAttrOptions.push( 'content' )
 
 }( window.jQuery || window.ender );
+
+$(function () {
+  $("a[rel=popover]")
+    .popover({
+      offset: 10
+    })
+    .click(function(e) {
+      e.preventDefault()
+    })
+});

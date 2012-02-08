@@ -1,29 +1,47 @@
-        <div class="main-content" style="width:620px;">
-          <div class="page-header">
-            <h2> <small>Sign in</small></h2>
-          </div>
-          <div class="stream-content">
+﻿<div class="row" rel="page">
+          <div class="main-content" style="width:620px;">
+            <div class="page-header">
+              <h2>欢迎登录 <small>胜因营销管理</small></h2>
+            </div>
+            <div id="sel_mes" class="stream-content">
+            	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+					  <div><%= f.label :email %>
+					  <%= f.email_field :email %></div>
+					
+					  <div><%= f.label :password %>
+					  <%= f.password_field :password %></div>
+					
+					  <% if devise_mapping.rememberable? -%>
+					    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+					  <% end -%>
+					
+					<%= render :partial => "devise/shared/links" %>
+					
+					  <div><%= f.submit "登入" %></div>
+				<% end %>
+            </div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %>
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %>
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-<%= render :partial => "devise/shared/links" %>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-
-
+         </div> 
+         <div class="dashboard"> 
+         		<div class="component">
+         			<div class="user-rec-inner ">
+				      <h4 class="user-rec-component">
+				      <span class="dashboard-component-title">输入关键词</span>
+				      <small>任意文字，词组</small>
+				      </h4>
+				    </div>
+				  </div>
+				<hr class="component-spacer">
+         		<div class="component">
+         			<div class="user-rec-inner ">
+				      <h4 class="user-rec-component">
+				      <span class="dashboard-component-title">输入关键词</span>
+				      <small>任意文字，词组</small>
+				      </h4>
+				    </div>
+				  </div>
+				<hr class="component-spacer">
+				</div>
+          </div><!--   dashboard end   --> 
 </div>
-</div> 
-         <div class="dashboard">
-            <p>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">bootstrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</p>
-          </div>
+

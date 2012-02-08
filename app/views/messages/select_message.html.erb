@@ -1,0 +1,146 @@
+         <div class="row">
+          <div class="main-content" style="width:620px;">
+            <div class="page-header">
+              <h2>微博搜索 <a href="#" rel="details_pane"><small>来自于新浪微博</small></a></h2>
+            </div>
+            <div id="sel_mes" class="stream-content"></div>
+
+         </div> 
+         <div class="dashboard"> 
+         		<div class="component" style="display: none; "></div>
+         		<div class="component">
+         			<div class="user-rec-inner ">
+				      <h4 class="user-rec-component">
+				      <span class="dashboard-component-title">输入关键词</span>
+				      <small>任意文字，词组</small>
+				    </h2>
+							<ul>
+							   <li><input type="text" id="str_sel_mes"></li>
+								<li>
+									<p>过滤条件</p>
+								</li>
+								<li>
+									<p>是否为原创：</p>
+									<select id="str_filter_ori">
+										<option value="0" selected="true">全部</option>
+										<option value="5">原创</option>
+										<option value="4">转发</option>
+									</select>
+								</li>
+								<li>
+									<p>是否包含图片：</p>
+									<select id="str_filter_pic">
+										<option value="0" selected="true">全部</option>
+										<option value="1">包含</option>
+										<option value="2">不包含</option>
+									</select>
+								</li>
+							</ul></br>
+										<a href="#" class="btn primary" onclick="start_search();" rel="twipsy"  data-original-title="输入关键词时，可直接回车搜索">搜索</a>
+
+					</div>
+				<hr class="component-spacer">
+				</div>
+          </div><!--   dashboard end   --> 
+         <!--   details pane   --> 
+          <div id="details-pane-outer">
+			    <div class="details-pane-shell">
+              <div class="details-pane" id="details-pane" style="display: none; height: 585px; width: 350px; left: 593px; margin-top: 15px; -webkit-transition-property: none; ">
+    <div class="inner-pane active">
+				  <div class="pane-toolbar pane-built-in">
+				          <a class="pane-close toolbar-control " rel="pane_close" href="javascript:void(0)">关闭 <span>×</span></a>
+				    <br style="clear: both">
+				  </div>
+					  <div id="pane-load">
+					  </div>
+			    </div>
+			  </div>
+			</div>
+	            <script>
+	            $(function () {
+	              $("a[rel=details_pane]")
+	                .click(function(e) {
+	                  $("#details-pane").css("display","block");
+	                  	$(document).ready(function(){
+								$("#details-pane").css("height",$(window).height() - 60);
+							});
+	                  $("#pane-load").load("/timeline/get_pane");
+	                })
+	            });
+	            $(function () {
+	              $("a[rel=pane_close]")
+	                .click(function(e) {
+	                  $("#details-pane").css("display","none");
+	                })
+	            });
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#details-pane").css("height",$(window).height() - 60);
+	});
+	function open_user_pane(userid){
+		$("#details-pane").css("display","block");
+	   $(document).ready(function(){
+			$("#details-pane").css("height",$(window).height() - 60);
+		});
+		var strUrl="/timeline/user_detail?struserid=" + userid;
+		//alert(strUrl);
+	   $("#pane-load").load(strUrl);
+	}
+	function open_weibo_pane(weiboid,reply_type){
+		$("#details-pane").css("display","block");
+	   $(document).ready(function(){
+			$("#details-pane").css("height",$(window).height() - 60);
+		});
+		var strUrl="/messages/edit_message?wbid=" + weiboid + "&type=" + reply_type;
+		alert(strUrl);
+	   $("#pane-load").load(strUrl);
+	}
+</script>
+			<!--   details pane  end --> 
+			<!--   weibo search --> 
+<script>
+function start_search(){
+	showLoading();
+	var txtq = $("#str_sel_mes").val();
+	var filterori = $("#str_filter_ori").val();
+	var filterpic = $("#str_filter_pic").val();
+	var strhost = window.location.host;
+	var strprotocol = window.location.protocol;
+	var strurl = strprotocol + "//" + strhost + "/messages/display_message"
+	$.ajax({
+		type: 'POST',
+	    //url: 'http://192.168.186.134:3000/messages/save_update',
+	    url: strurl,
+	    data: {"strq":txtq,"strfilterori":filterori,"strfilterpic":filterpic },
+	    contentType: 'multipart/form-data',
+	    datatype: 'json',
+	    success:function(data)
+	    {
+	    	//alert(data);
+	    	$("#sel_mes").html(data);
+	    	hideLoading();
+	    },
+	    error:function(xhr,r,e)
+	    {
+	    	//alert(e)
+	    	$("#sel_mes").html("远方服务器没有响应，请稍候再试！");
+	    	
+	    	hideLoading();
+	    }
+	  });
+   
+};
+$(document).ready(function(){
+	$('input:text:first').focus();
+	$("#str_sel_mes").bind('keydown',function(e){
+		if(e.keyCode==13){
+			start_search()
+		}
+	}); 
+});
+
+</script>
+			<!--   weibo search  end --> 
+</div>
+

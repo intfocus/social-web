@@ -129,3 +129,679 @@
   background:#fff;
 }
 
+/* Page header tweaks */
+.page-header {
+  background: whiteSmoke;
+  border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  padding: 10px 10px 10px 20px;
+  position: relative;
+  z-index: 2;
+  zoom: 1;
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+}
+      
+// Loading text div
+// ---------
+
+.loadingtxt {
+  position: absolute;
+  visibility: visible;
+  padding: 20px 20px 20px 20px;
+  font-size: 18px;
+  left:47%; 
+  top:50%;
+  z-index: 1000;
+  filter: alpha(opacity=80);
+  -khtml-opacity: 0.8;
+  -moz-opacity: 0.8;
+  opacity: 0.8;
+  background-color: black;
+  color: white;
+  text-align: center;
+  max-width: 200px;
+  text-decoration: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+    -webkit-border-radius: 5px 5px 6px 6px;
+       -moz-border-radius: 5px 5px 6px 6px;
+            border-radius: 5px 5px 6px 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.5);
+       -moz-box-shadow: 0 1px 2px rgba(0,0,0,.5);
+            box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+
+// tweet stream
+// ---------
+.stream-content{
+  padding: 0 0 0 0;
+  position: relative;
+  z-index:3;
+}
+.tweet-image {
+float:left;
+height:98px;
+overflow:hidden;
+width:58px;
+margin-top:3px;
+}
+
+.tweet-content {
+margin-left:58px;
+min-height:48px;
+}
+
+.stream-tweet.withheld-tweet .tweet-content {
+min-height:40px;
+}
+
+.tweet-row {
+display:block;
+position:relative;
+line-height:15px;
+}
+
+.tweet-corner {
+display:inline-block;
+margin-right:10px;
+}
+
+.tweet-user-follow,.tweet-user-follow a {
+color:#5EBF7E !important;
+font-size:12px;
+}
+
+.tweet-user-withheld {
+font-weight:700;
+color:#333 !important;
+font-size:24px;
+}
+
+.tweet-screen-name {
+font-weight:700;
+color:#333 !important;
+}
+
+.tweet-user-block-image {
+width:32px;
+height:32px;
+float:left;
+}
+
+.tweet-user-block-name {
+margin-left:40px;
+min-height:36px;
+line-height:16px;
+padding-top:0;
+}
+
+.tweet-user-block-screen-name {
+display:inline-block;
+color:#333;
+font-weight:700;
+margin-top:-2px;
+}
+
+.tweet-user-block-full-name {
+display:block;
+font-size:12px;
+margin-top:1px;
+color:#999;
+}
+
+.tweet {
+font-size:15px;
+position:relative;
+zoom:1px;
+padding:10px 20px;
+}
+
+.tweet hr {
+margin:20px 0;
+}
+
+.stream {
+position:relative;
+background-color:#fff;
+padding-top:1px;
+min-height:800px;
+margin-top:1px;
+zoom:1px;
+}
+
+.stream .stream-item:first-child,.stream .hovered-stream-item:first-child,.related-tweets .stream-item:first-child:hover {
+border-top:none;
+}
+
+.stream-item {
+position:relative;
+border-bottom:1px solid #ebebeb;
+min-height:60px;
+clear:both;
+display:block;
+outline:none;
+margin-top:-1px;
+border-top:1px solid transparent;
+}
+
+.stream-item:hover,.related-tweets .stream-item:hover,.hovered-stream-item {
+cursor:pointer;
+background:#f4f4f4;
+border-top:1px solid #EBEBEB;
+}
+
+.stream-item.withheld-item,.stream-item.withheld-item:hover {
+background:#f7f7f7 !important;
+border-top:1px solid #EBEBEB !important;
+border-bottom:1px solid #EBEBEB !important;
+}
+
+.stream-item[data-item-type="list"] {
+background:#fff !important;
+border-color:#EBEBEB !important;
+}
+
+.stream-item .more {
+_visibility:hidden !important;
+display:none;
+width:17px;
+height:18px;
+position:absolute;
+margin-top:8px;
+z-index:1;
+outline:none;
+text-indent:-99999px;
+right:10px;
+background:url(../img/sprite-icons.png) no-repeat -288px 0;
+}
+
+.stream-item .more:hover {
+background:url(../img/sprite-icons.png) no-repeat -288px -32px;
+}
+
+.stream-item:active .more {
+background:url(../img/sprite-icons.png) no-repeat -288px -64px;
+}
+
+.stream-item.focused-stream-item .more {
+background:url(../img/sprite-icons.png) no-repeat -320px 0;
+}
+
+.stream-item.focused-stream-item .more:hover {
+background:url(../img/sprite-icons.png) no-repeat -320px -32px;
+}
+
+.stream-item.focused-stream-item:active .more {
+background:url(../img/sprite-icons.png) no-repeat -320px -64px;
+}
+
+.stream-item .arrow {
+display:none;
+width:17px;
+height:29px;
+position:absolute;
+margin-top:3px;
+z-index:6;
+outline:none;
+text-indent:-99999px;
+right:-17px;
+background:url(../img/pointer-right-hover.png);
+}
+
+.focused-stream-item,.focused-stream-item:hover {
+cursor:pointer;
+background:#eee;
+border-bottom:1px solid #ccc;
+margin-top:-1px;
+border-top:1px solid #ccc;
+outline:none;
+}
+
+.focused-stream-item:hover .arrow,.focused-stream-item .arrow {
+display:block !important;
+}
+
+.hovered-stream-item,.related-tweets .stream-item:hover {
+background:#f4f4f4;
+}
+
+.stream-loading {
+position:relative;
+height:60px;
+text-align:center;
+}
+
+.stream-end,.stream-whale-end {
+position:relative;
+min-height:60px;
+text-align:center;
+color:#666;
+}
+
+.stream-end {
+padding:20px 15px;
+}
+
+.stream-whale-end {
+padding:20px 80px;
+}
+
+.stream-end img {
+margin:5px 3px -5px 0;
+}
+
+.stream-title h2 {
+font-size:15px;
+font-weight:300;
+margin-bottom:0;
+color:#666;
+padding:14px 20px 5px;
+}
+
+.stream-title .go-to-list-page {
+float:right;
+text-decoration:none;
+font-size:12px;
+font-weight:400;
+}
+
+.stream-items {
+  .js-activity {
+    min-height: 52px;
+    &.expanded .activity-supplement {
+      padding-top: 16px; } }
+  .js-activity-follow:hover, .js-activity-list_member_added:hover {
+    cursor: default !important; }
+  .focused-stream-item.js-activity-follow {
+    background: #fff;
+    border-color: #EBEBEB; } }
+
+.stream-item-activity-line {
+  color: #666;
+  line-height: 16px;
+  padding: 18px 20px 0 80px; }
+
+.activity-truncated-tweet .tweet, .truncated-tweet {
+  font-size: 13px;
+  margin-bottom: 0;
+  padding: 2px 20px 2px 80px; }
+
+.activity-timestamp {
+  float: right;
+  color: #999;
+  font-size: 11px;
+  margin: 19px 20px 0; }
+
+.stream-item-activity-network {
+  .activity-timestamp {
+    visibility: hidden;
+    margin: 15px 18px 0 20px; }
+  .stream-item-activity-line {
+    font-size: 15px;
+    padding: 16px 20px 4px 78px; } }
+
+.stream-item-activity-line-network {
+  .user .user-profile-link b {
+    font-weight: 700;
+    color: #333; }
+  img {
+    position: absolute;
+    left: 20px;
+    top: 18px; } }
+
+.stream-item-activity {
+  .tweet-row-user {
+    padding-top: 4px;
+    .tweet-image {
+      width: 32px;
+      height: 24px; }
+    .tweet-row-user-data {
+      float: left;
+      line-height: 12px; }
+    .tweet-actions {
+      position: absolute;
+      right: -2px;
+      top: 18px; }
+    .tweet-row-user-data {
+      .tweet-user-name {
+        clear: both;
+        display: block;
+        font-size: 11px;
+        padding-top: 2px;
+        a {
+          color: #666 !important; } }
+      .tweet-full-name {
+        font-size: 11px;
+        display: none; } } }
+  .activity-supplement .tweet-dogear {
+    top: -36px; } }
+
+.expanded .stream-item-activity .activity-supplement .tweet-dogear {
+  top: -17px; }
+
+.stream-item-activity .tweet-content {
+  margin-left: 78px;
+  width: 430px;
+  display: block;
+  clear: both; }
+
+.stream-item-activity-line {
+  .tweet {
+    font-size: 11px;
+    width: 386px;
+    margin: 2px 0 0;
+    padding: 0; }
+  .tweet-row {
+    height: 14px;
+    color: #999 !important; }
+  span.subject b {
+    font-weight: 700;
+    color: #000; } }
+
+.stream-item-activity .activity-supplement .tweet-corner {
+  position: absolute;
+  right: 0; }
+
+.stream-item-list_member_added .activity-supplement, .stream-item-follow .activity-supplement {
+  margin-left: 78px; }
+
+.activity-secondary-supplement {
+  display: none;
+  margin: -5px 0 15px 78px; }
+
+.stream-item-activity .user-content-medium {
+  width: 198px;
+  background: #f4f4f4;
+  height: 72px;
+  box-shadow: 0 1px 1px #ddd;
+  -moz-box-shadow: 0 1px 1px #ddd;
+  -webkit-box-shadow: 0 1px 1px #ddd;
+  margin: 5px 15px 20px 0;
+  padding: 0 15px 0 0; }
+
+.js-activity:hover .stream-item-activity .user-content-medium {
+  _background: #fff;
+  background: #fff; }
+
+.stream-items .focused-stream-item.js-activity-follow .user-content-medium {
+  cursor: pointer;
+  box-shadow: 0 1px 1px #ccc;
+  -moz-box-shadow: 0 1px 1px #ccc;
+  -webkit-box-shadow: 0 1px 1px #ccc; }
+
+.stream-item-activity {
+  &:hover .user-content-medium {
+    cursor: pointer;
+    box-shadow: 0 1px 1px #ccc;
+    -moz-box-shadow: 0 1px 1px #ccc;
+    -webkit-box-shadow: 0 1px 1px #ccc; }
+  .user-content-medium .user-content-image {
+    width: 72px;
+    height: 72px;
+    float: left;
+    margin: 0 10px 0 0; } }
+
+.stream-item-activity-me {
+  .user-content-medium {
+    .user-content-image {
+      width: 24px;
+      height: 24px; }
+    width: 24px;
+    height: 24px;
+    min-height: 24px; }
+  .follow-more-than-two .user-content-medium {
+    width: 24px;
+    height: 24px;
+    min-height: 24px; } }
+
+.stream-item-activity {
+  .user-content-rest {
+    width: 100px;
+    padding-top: 8px;
+    font-size: 12px;
+    margin-left: 0;
+    line-height: 13px;
+    float: left;
+    .full-name {
+      font-size: 11px;
+      display: inline-block;
+      max-width: 110px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 12px; }
+    .user-name {
+      width: 135px;
+      padding-bottom: 4px;
+      display: block; }
+    .user-profile-link {
+      clear: both;
+      display: block; } }
+  .user-content-medium .stream-user-buttons {
+    float: none;
+    width: 115px;
+    margin: 0;
+    padding: 0;
+    .button {
+      font-size: 11px;
+      padding: 3px 6px; }
+    .unfollow-button {
+      padding: 3px 6px;
+      em.wrapper {
+        margin: 0 5px 0 0;
+        padding: 0; } } } }
+
+.stream-item-list_member_added .user-content-medium, .follow-more-than-two .user-content-medium {
+  width: 72px;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  border: none !important;
+  margin: 0 1px 1px 0;
+  padding: 0; }
+
+.stream-item-list_member_added .user-content-medium:hover img, .follow-more-than-two .user-content-medium:hover img, .stream-item-activity-me .activity-supplement .user-content-medium:hover img {
+  background: #fff;
+  opacity: .8; }
+
+.stream-item-list_member_added .activity-supplement, .follow-more-than-two {
+  padding-top: 5px;
+  padding-bottom: 15px;
+  line-height: 0; }
+
+.stream-item-activity {
+  .stream-user-buttons .button span.plus {
+    display: inline-block !important; }
+  b.type i {
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../img/sprite-activity-icons.png) no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    right: 0;
+    opacity: .3; } }
+
+.activity-list-container b.type i {
+  display: inline-block;
+  vertical-align: middle;
+  background: url(../img/sprite-activity-icons.png) no-repeat 0 0;
+  width: 16px;
+  height: 16px;
+  right: 0;
+  opacity: .3; }
+
+.view-all-supplements {
+  display: block;
+  clear: both;
+  font-size: 11px;
+  margin-left: 78px;
+  margin-top: -10px;
+  background: transparent;
+  outline: none;
+  padding: 0 0 14px; }
+
+.stream-item-activity b.type {
+  margin-left: -20px; }
+
+.stream-item-activity-network b.type {
+  position: absolute;
+  right: 15px;
+  top: 14px;
+  display: none; }
+
+.stream-item-activity b.type i {
+  margin-top: -4px; }
+
+.js-activity-follow b.type i {
+  background-position: 0 -16px; }
+
+.js-activity-favorite b.type i, .tweet-activity-lists .favorites b.type i {
+  background-position: -16px -16px; }
+
+.js-activity-reply b.type i, .tweet-activity-lists .replies b.type i {
+  background-position: -64px -16px; }
+
+.stream-item-list b.type i, .stream-item-listed b.type i, .js-activity-list_member_added b.type i, .stream-item-list_created b.type i {
+  background-position: -32px 16px; }
+
+.stream-items {
+  .js-activity-mention, .js-activity-reply {
+    min-height: 76px; } }
+
+.stream-item-activity-me {
+  .activity-supplement {
+    line-height: 0;
+    display: block;
+    clear: both;
+    margin: 0;
+    padding: 0 12px 18px 80px; }
+  div {
+    &.truncated-tweet, &.latest-tweet {
+      margin-bottom: 3px; } }
+  .user-content-medium {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    margin: 0 1px 1px 0;
+    padding: 0; }
+  &:hover .user-content-medium {
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none; }
+  .user-profile-link b, .list-link b {
+    color: #333;
+    font-weight: 700; }
+  .sub-stream-item {
+    zoom: 1px;
+    display: inline; }
+  .stream-item-activity-line {
+    font-size: 15px;
+    line-height: 18px;
+    padding-top: 16px;
+    padding-bottom: 5px; }
+  b.type {
+    margin-left: 0;
+    position: absolute;
+    width: 24px;
+    left: 60px;
+    top: 16px;
+    z-index: 4;
+    zoom: 1px; } }
+
+.stream-item-activity-network .activity-supplement .activity-item-tweet .activity-item-tweet-content {
+  border-left: 2px solid #EBEBEB;
+  padding-left: 10px;
+  margin-bottom: 14px; }
+
+.focused-stream-item .stream-item-activity-network .activity-supplement .activity-item-tweet .activity-item-tweet-content {
+  border-left: 2px solid #ccc; }
+
+.stream-item-activity-network .activity-supplement .activity-item-tweet .activity-item-tweet-content .tweet-text {
+  padding-right: 8px; }
+
+.stream-item-activity-me .follow-more-than-two {
+  padding-right: 12px; }
+
+.stream-items .js-activity-list_created .stream-item-activity-network {
+  min-height: 86px; }
+
+.activity-target-screen-name .user .user-profile-link {
+  s {
+    display: inline;
+    color: #666 !important; }
+  b {
+    font-weight: 400;
+    color: #666 !important; } }
+
+.tweet-activity-lists {
+  .activity-list-container {
+    float: none;
+    display: block;
+    clear: both; }
+  .tweet-activity-count-container {
+    font-size: 11px;
+    display: inline-block;
+    padding-left: 6px;
+    padding-top: 2px; } }
+
+.permalink .tweet-activity-count-container {
+  font-size: 13px; }
+
+.dashboard {
+  .stream-item-activity-line-network img {
+    top: auto;
+    width: 32px;
+    height: 32px; }
+  .stream-item-activity-network .stream-item-activity-line {
+    font-size: 13px;
+    padding: 16px 20px 4px 38px; }
+  .activity-supplement {
+    margin-left: 38px; }
+  .stream-item-activity .tweet-content {
+    margin-left: 0;
+    width: 290px; }
+  .stream-item-activity-network b.type {
+    top: auto;
+    display: none; }
+  .tweet-content .tweet-text {
+    line-height: 17px; } }
+
+.dashboard-activity-teaser-inner {
+  .dashboard-activity-item-sentence {
+    padding-left: 3px; }
+  img, .dashboard-activity-item-sentence {
+    vertical-align: middle; } }
+
+.dashboard-activity-item-link {
+  display: block;
+  width: 340px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 24px;
+  white-space: nowrap;
+  .dashboard-activity-item-entity {
+    white-space: nowrap;
+    text-overflow: ellipsis; } }
+
+.dashboard-activity-teaser-inner .activity-items {
+  height: 87px;
+  overflow: hidden; }
+  
+  
+//box-style
+.box-style {
+  min-height: 30px;
+  _font-size: 0;
+  position: relative;
+  margin: 10px 0px 3px;
+}
+.box-style .box-content {
+  border: solid gainsboro;
+  padding: 15px;
+  background: #F6F6F6;
+  _zoom: 1;
+  border-width: 0 1px;
+}

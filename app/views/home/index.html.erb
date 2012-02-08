@@ -1,9 +1,78 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<% if session[:atoken] %>
-    <p>11111111</p>
-	<p><%= @session1 %></p>
-	<p><%= @session2 %></p>
-<% else %>
-    <p>22222222</p>
-<% end %>
+<!DOCTYPE html>
+<html dir="ltr" lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="description" content="胜因社交管理是基于国内互联网环境的社交媒体管理和营销工具，针对电子商务进行高效安全快速的微博运营。通过胜因社交管理网站，品牌广告主、SME(电子商务，淘宝店，中小企业)可以轻松管理自己的微博各类信息，寻找有价值的客户粉丝，对微博营销实现有效监控，极大扩展潜在客户群和实现企业的运营目标。">
+<meta name="keywords" content="微博营销,社交媒体管理,电子商务微博,胜因社交管理,Social Media Management,Social CRM">
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<meta property="xn:admins" content="35090757"/>
+<meta property="xn:admins" content="388109615"/>
+<title>胜因社交管理 - KMsocial.cn </title>
+<script type="text/javascript">
+            <% if user_signed_in? %>    
+				window.location.assign('/timeline');
+			  <% end %>
+</script>
+</head>
+<body>
+<div id="loading" style="font-size: 25px;margin: 0 auto;padding-top: 238px;text-align:center;">Loading ...</div>
+<header class="main-size" id="header" style="display:none;">
+	<section id="logo-login" class="clearfix">
+		<h1 id="site_logo"><a title="胜因社交管理" alt="胜因社交管理" class="hidden-txt">胜因社交管理</a></h1>
+		<div id="signin-box">
+			<a hidefocus="true" href="javascript:void(0)" id="signin" class="round4">登 录</a>
+			<form id="signin-form" class="round4" method="post" action="/p/login/">				
+				<div id="signinform" class="round5 shdw" style="display: none;">
+					<label>电子邮箱：<input tabindex="1" id="signin-email" name="username" value="" class="signin-text" type="email"></label>
+					<label>密码：<input tabindex="2" id="signin-pw" name="password" class="signin-text" maxlength="30" type="password"></label>
+					<div id="signinform-bottom">
+						<button title="点击登录" class="green-btn" id="signin-form-submit" type="submit"><span>登录</span><img src="css/img/lock-login.png" width="16" height="15"></button>	
+						<label><input id="signin-rememberme" name="signin-rememberme" checked="checked" type="checkbox">下次自动登录</label>															
+						<p><a href="reg.shtml">新用户注册</a> | <a href="passwordrecovery.html">忘记密码？</a></p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</header>
+<article class="index-info main-size" id="pageBody" style="display:none;">
+	<h2>亮点功能介绍</h2>
+	<div class="km-info km-info1 tl">
+		<h3>管理各个社交网络账户</h3>
+		<p>我们将多个社交网络融合在一起，为您提供跨平台多账户的管理功能。<br>您将会一次得到所有社交账户中的有用信息，有效分配时间达到高效管理。</p>		
+	</div>
+	<div class="km-info km-info2 tr">
+		<h3>发掘有效客户群</h3>
+		<p>我们提供高级的搜索定制功能，凭借专业的搜索技术和有效的信息分析，针<br>对性地为您提供潜在的目标价值客户，帮您最大化有效客户群</p>		
+	</div>
+	<div class="km-info km-info3 tl">
+		<h3>提高客户忠诚度</h3>
+		<p>提高您在社交网络中的交互程度。通过浏览整理好的消息、方便的与任何联<br>系人进行互动，您不会错过任何有价值的信息或与客户交流互动的机会。</p>
+	</div>
+	<div class="km-info km-info4 tr">
+		<h3>高效管理联系人</h3>
+		<p>方便的管理您所有社交账户中的联系人，了解他们的最新活动好友，查看你<br>们的交互历史，这是一种非常棒的通讯体验！</p>		
+	</div>
+	<div class="km-info km-info5 tl">
+		<h3>最小化信息处理成本</h3>
+		<p>我们细心为您将各种消息整合在一起，您可以最快的处理新消息和方便的查<br>看所有历史消息，这会为您带来最大的方便。</p>		
+	</div>
+	<div class="km-info km-info6 tr">
+		<h3>使消息发布和推广更加便捷</h3>
+		<p>定时任务的管理和互动素材的提供使您能够轻松组织自己的消息发布，实现与<br>客户的互动，完成产品的推广。</p>		
+	</div>
+	<div class="km-info km-info7 tl">
+		<h3>监控品牌和竞争对手的运营状况</h3>
+		<p>所有和您品牌有关的信息以及竞争对手的社交状态，我们都会递交到您的面<br>前，使您了解品牌的运营效果。</p>		
+	</div>
+	<div class="km-info km-info8 tr">
+		<h3>掌握您和客户在社交网络中的评估数据</h3>
+		<p>透过我们的专业数据统计报告，您会方便看到您和客户的影响力和活跃度数<br>据，对运营提升空间有最大的了解，以针对性的提升管理达到预期目标。</p>		
+	</div>
+</article>
+<script type="text/javascript">$(document).ready(function(){$('#loading').remove();$('#header').show();$('#pageBody').show();$('#footer').show();$('#myRoundabout').roundabout({childSelector:'img',btnNext:'#next',btnPrev:'#previous',clickToFocus:false,childInFocus:3,minOpacity:1,minZ:20,maxZ:30,minScale:0.6,tilt:1});});</script> 
+</body>
+</html>

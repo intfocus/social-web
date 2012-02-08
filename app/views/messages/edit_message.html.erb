@@ -1,0 +1,10 @@
+<%= javascript_include_tag "/javascripts/libs/jquery-1.7.1.min.js" %>
+<%= javascript_include_tag "/javascripts/editmessage.js" %>
+<input type="hidden" id="wbid" value="<%=h @txtwbid %>" />
+<input type="hidden" id="typetxt" value="<%=h @typetxt %>" />
+<ul>
+	<li><p><%= @txttype %></p></li>
+	<li><p><%= @txtmessage%></p></li>
+	<li><textarea id="txtrepost"></textarea></li>
+	<li><input type="button" id="butsend" value="发送" /></li>
+</ul>
