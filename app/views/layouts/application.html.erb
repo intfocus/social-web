@@ -35,8 +35,8 @@
       /* The white background content wrapper */
       .container > .content {
         background: rgba(218, 236, 244, 0.9);
-        padding: 0 20px 0 20px;
-        margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+        padding: 0 0 0 0;
+        margin: 0; /* -20px;  negative indent the amount of the padding to maintain the grid system */
         -webkit-border-radius: 5px 5px 6px 6px;
            -moz-border-radius: 5px 5px 6px 6px;
                 border-radius: 5px 5px 6px 6px;
@@ -74,31 +74,41 @@
         <div class="container">
           <a class="brand" href="#">胜因营销</a>
           <ul class="nav">
-            <li class="active"><a href="/reports/dashboard">首页</a></li>
-            <li><a href="/timeline">测试页</a></li>
+            <li><a href="/reports/dashboard">首页</a></li>
+            <li><a href="/messages/select_message">微博搜索</a></li>
+            <li><a href="/messages/upload_message">发布管理</a></li>
             <li class="menu">
-               <a href="#" class="menu">微博管理</a>
+               <a href="#" class="menu">客户管理</a>
                <ul class="menu-dropdown">
-                  <li><a href="/messages/select_message">微博搜索</a></li>
-                  <li><a href="/messages/upload_message">微博发布</a></li>
+                  <li><a href="/messages/select_message">回复评论</a></li>
+                  <li><a href="/messages/upload_message">关系管理</a></li>
                   <li class="divider"></li>
-                  <li><a href="/messages/display_message">微博监控</a></li>
+                  <li><a href="/messages/display_message">推荐客户</a></li>
+                  <li><a href="/messages/select_message">潜客规则设置</a></li>
+                </ul>
+             </li>
+            <li class="menu">
+               <a href="#" class="menu">微博监听</a>
+               <ul class="menu-dropdown">
+                  <li><a href="/messages/display_message">数据导出</a></li>
+                  <li><a href="/messages/select_message">监听规则设置</a></li>
                 </ul>
               </li>
               <li class="menu">
-                 <a href="#" class="menu">Dropdown 2</a>
+                 <a href="#" class="menu">数据分析</a>
                  <ul class="menu-dropdown">
-                    <li><a href="#">Secondary link</a></li>
-                    <li><a href="#">Something else here</a></li>
+                    <li><a href="/report">关键词分析</a></li>
+                    <li><a href="#">客户分析</a></li>
+                    <li><a href="#">事件串分析</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">Another link</a></li>
+                    <li><a href="#">我的微博统计</a></li>
                   </ul>
                </li>
           </ul>
           <form action="/users/sign_in" class="pull-right">
            <p style="color: white;">
             <% if user_signed_in? %>    
-			    当前用户 <%= current_user.email %>    
+			    当前用户 <%=link_to current_user.email, {:action=>"select_message",:user=>"123", :usee33r=>"123", :controller=>"messages"} %>    
 			    <%= link_to "登出", destroy_user_session_path, :method => :delete %>    
 			  <% else %>    
 			    <%= link_to "注册", new_user_registration_path %> 或    
@@ -119,10 +129,10 @@
         <%= yield %>
       </div>
       <footer>
-        <p>&copy; Company 2011</p>
+        <p>&copy; 胜因软件 2012</p>
       </footer>
 
-    </div> <!-- /container -->
+    </div> </div><!-- /container -->
    </div>
   </div>
   

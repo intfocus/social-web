@@ -1,0 +1,30 @@
+<%= javascript_include_tag "/javascripts/libs/jquery-1.7.1.min.js" %>
+<%= javascript_include_tag "/javascripts/user_select.js" %>
+<%= @strsession %>
+
+<div>
+	<ul>
+		<li>关键词：</li>
+		<li>
+			<input type="text" id="txtselect" style="width: 300" />
+		</li>
+		<li>
+			<input type="button" id="butselect" value="搜索" />
+		</li>
+		<li>范围：</li>
+		<li><input type="checkbox" id="txtmes" checked="true" />简介</li>
+		<li><input type="checkbox" id="txtsdomain" checked="true" />个性域名</li>
+		<li class="gray6"><em class="error_color">*</em> 性&nbsp;&nbsp;别：</th></li>
+        <li class="info_tab_vm">
+        	<input id="man" name="gender" type="radio" value="1" class="info_radio01" checked="true" />男
+        	&nbsp;
+        	<input id="woman" name="gender" type="radio" value="2" class="info_radio01" />女
+        </li>
+		<li>地域：</li>
+		<li>
+			<select name="province" id="province" ></select> 
+            <select name="city" id="city" ></select>
+		</li>
+	</ul>
+</div>
+<div id="userselect"></div>

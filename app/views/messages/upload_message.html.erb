@@ -2,6 +2,7 @@
 <%= javascript_include_tag "/javascripts/Main.js" %>
 <%= javascript_include_tag "/javascripts/upload.js" %>
 <%= stylesheet_link_tag    "/stylesheets/upload.css" %>
+<%= javascript_include_tag "/javascripts/imgmessage.js" %>
 <br />
 <br />
 <br />
@@ -12,7 +13,16 @@
 			<textarea rows="3" cols="40" id="uploadmess" ></textarea>
 		</li>
 	    <li>
-		    <%=link_to "文件上传","/messages/img_message"%><p id="imagefile"><%=@imgf%></p>
+		    <div style="display:none;">
+		    	<form id="uploadsubmit" accept-charset="UTF-8" action="/messages/upload" enctype="multipart/form-data" method="post">
+		    		<input id="img" name="img" size="40" type="file" />
+		    		<input id="strtxt" name="strtxt" type="hidden" value="/messages/upload_message" />
+		    		<input name="commit" type="submit" value="上传文件" />
+		    	</form>
+		    </div>
+		    <br />
+		    <input id="upload_img" type="button" value="上传图片" />
+		    <p id="imagefile"><%=@imgf%></p>
 	    </li>
 	</ul>
 </div>
@@ -29,8 +39,10 @@
 				<option value="3" selected="true">入库</option>
 				<option value="2">定时</option>
 				<option value="1">即时</option>
-				<option value="4">监控</option>
 			</select>
+		</li>
+		<li>
+			<input type="checkbox" id="txtmonitor" checked="true" />监控
 		</li>
 	</ul>
 </div>

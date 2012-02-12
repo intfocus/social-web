@@ -2,11 +2,22 @@
 $(document).ready(function(){
   $("#clock4").clock({"format":"24","calendar":"false"});
   $("#uploadmess").keypress(function(e){
-  	var myDate = new Date(new Date().getTime()+1000*60*5);
     if(e.keyCode==13){
+      var clock = $("#txtclock").val();
+  	  //var myDate = new Date(new Date().getTime()+1000*60*parseInt(clock));
 	  var txtmessage = $("#uploadmess").val();
 	  var imgfile = $("#imagefile").html();
+	  var send_state = $("#send_state").val();
 	  var txtimage = "";
+	  var txtmonitor = 0;
+	  if($("#txtmonitor").attr("checked"))
+	  {
+	  	txtmonitor = 1;
+	  }
+	  else
+	  {
+	  	txtmonitor = 0;
+	  }
 	  var strhost = window.location.host;
 	  var strprotocol = window.location.protocol;
 	  var strurl = strprotocol + "//" + strhost + "/messages/save_update"
@@ -14,17 +25,25 @@ $(document).ready(function(){
 			type: 'POST',
 			//url: 'http://192.168.186.134:3000/messages/save_update',
 			url: strurl,
-			data: {"strmes":txtmessage,"strimg":imgfile,"strupt":"" },
+			data: {
+				"strmes":txtmessage,
+				"strimg":imgfile,
+				"strupt":"",
+				"clock":clock,
+				"send_state":send_state,
+				"strtype":"savemessage",
+				"strmonitor":txtmonitor 
+			},
 			contentType: 'multipart/form-data',
 			datatype: 'json',
 			success:function(data)
 			{
-				alert(data);
+				//alert(data);
 				location.reload();
 			},
 			error:function(xhr,r,e)
 			{
-				alert(e)
+				//alert(e)
 			}
 		});
 	  //alert("文字个数" + txtmessage.length);  
@@ -81,13 +100,13 @@ $(document).ready(function(){
   $("#btn5").click(function(){
     var str="";
     $("[name='checkbox']").each(function(){
-	  if(!$(this).attr("checked"))
+	  if($(this).attr("checked"))
 	  {
         str+=$(this).val()+",";
 	  }
     });
     str = str.substring(0,str.length-1)
-    alert(str);
+    //alert(str);
     var strhost = window.location.host;
 	var strprotocol = window.location.protocol;
 	var strurl = strprotocol + "//" + strhost + "/messages/save_update"
@@ -95,15 +114,15 @@ $(document).ready(function(){
 			type: 'POST',
 			//url: 'http://192.168.186.134:3000/messages/save_update',
 			url: strurl,
-			data: {"strid":str},
+			data: {"strid":str,"strtype":"deletemessage"},
 			success:function(data)
 			{
-				alert(data);
+				//alert(data);
 				location.reload();
 			},
 			error:function(xhr,r,e)
 			{
-				alert(e)
+				//alert(e)
 			}
 		});
   });

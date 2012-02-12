@@ -2,6 +2,7 @@
 <%= javascript_include_tag "/javascripts/Main.js" %>
 <%= javascript_include_tag "/javascripts/upload_edit.js" %>
 <%= stylesheet_link_tag    "/stylesheets/upload.css" %>
+<%= javascript_include_tag "/javascripts/imgmessage.js" %>
 <input type="hidden" id="txtid" value="<%=h @txtid %>">
 <div>
 	<ul>
@@ -15,7 +16,15 @@
 		<% end %>
 		<li>修改上传图片：</li>
 	    <li>
-		    <%=link_to "文件上传","/messages/img_message"%><p id="imagefile"><%=@imgf%></p>
+		    <div style="display:none;">
+		    	<form id="uploadsubmit" accept-charset="UTF-8" action="/messages/upload" enctype="multipart/form-data" method="post">
+		    		<input id="img" name="img" size="40" type="file" />
+		    		<input id="strtxt" name="strtxt" type="hidden" value="/messages/upload_edit/<%=h @txtid %>" />
+		    		<input name="commit" type="submit" value="上传文件" />
+		    	</form>
+		    </div>
+		    <br />
+		    <input id="upload_img" type="button" value="上传图片" />
 	    </li>
 	    <li>
 			<select id="send_state">
@@ -34,12 +43,14 @@
 				<% else %>
 				<option value="1">即时</option>
 				<% end %>
-				<% if @txtisselected == 4 %>
-				<option value="4" selected="true">监控</option>
-				<% else %>
-				<option value="4">监控</option>
-				<% end %>
 			</select>
+		</li>
+		<li>
+			<% if @txtmonitor %>
+			<input type="checkbox" id="txtmonitor" checked="true" />监控
+			<% else %>
+			<input type="checkbox" id="txtmonitor" />监控
+			<% end %>
 		</li>
 	</ul>
 </div>

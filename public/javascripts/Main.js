@@ -14,7 +14,7 @@ $.fn.FormFace = function(o){
 		var L;
 		
 		if($(o.cid).size()<=0){
-			alert("FormFace插件提醒：未找到 "+o.cid);
+			//alert("FormFace插件提醒：未找到 "+o.cid);
 			return false;
 		};
 		
@@ -88,7 +88,7 @@ $.fn.FormFace = function(o){
 		//Btn点击 --- 这里预留，配合程序自行修改
 			$(o.btn).click(function(){
 				if(A.val()==""){
-					alert("输入框不能为空")
+					//alert("输入框不能为空")
 					A.focus();
 					return false;
 				};

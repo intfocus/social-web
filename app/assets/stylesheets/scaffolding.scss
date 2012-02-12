@@ -82,7 +82,8 @@ a {
 
 .row {
   @include clearfix();
-  margin-left: -1 * $gridGutterWidth;
+//  margin-left: -1 * $gridGutterWidth;
+    margin-left: 0;
 }
 
 // Find all .span# classes within .row and give them the necessary properties for grid columns (supported by all browsers back to IE7)

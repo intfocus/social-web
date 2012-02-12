@@ -1,10 +1,87 @@
-<%= javascript_include_tag "/javascripts/libs/jquery-1.7.1.min.js" %>
-<%= javascript_include_tag "/javascripts/editmessage.js" %>
-<input type="hidden" id="wbid" value="<%=h @txtwbid %>" />
-<input type="hidden" id="typetxt" value="<%=h @typetxt %>" />
-<ul>
-	<li><p><%= @txttype %></p></li>
-	<li><p><%= @txtmessage%></p></li>
-	<li><textarea id="txtrepost"></textarea></li>
-	<li><input type="button" id="butsend" value="发送" /></li>
-</ul>
+<form>
+	<input type="hidden" id="wbid" value="<%=h @txtwbid %>" />
+	<input type="hidden" id="typetxt" value="<%=h @typetxt %>" />
+  <div class="tab-pane active" id="show_weibo">
+	<div class="clearfix">
+	  <label for="txtrepost" style="text-align: left;">评论内容：</label>
+	    <div class="span5">
+	      <textarea class="span5" id="txtrepost" name="txtrepost" cols="30" rows="5" />
+	    </div>
+	  </div>
+	  <% if @txttype == '评论' %>
+	  <div class="clearfix">
+	    <label>
+            <input type="checkbox" name="repost" value="true" checked="true">
+            <span>同时转发一条微博</span>
+         </label>
+	  </div>
+	  <% end %>
+     <a href="javascript:void(0)" id="butsend" class="btn primary"  rel="twipsy"  data-original-title="输入关键词时，可直接回车搜索" ><%= @txttype %></a>
+  </div>
+</form> 
+
+<!--微博外包装 -->
+  <div class="stream-manager js-stream-manager-container">
+  <div class="js-stream-manager" id="profile-stream-manager"><div class="stream-title"></div><div class="stream-container"><div class="stream ">
+  <div class="js-stream-items stream-items" id="stream-items-id">
+		<% if @strmessage != nil && @strmessage != "" %>
+		  <% @strmessage.each do |weibo| %>
+		  <!--单条微博 -->
+		    <div class="js-stream-item stream-item" data-item-id="<%=h weibo.id %>" data-item-type="tweet" media="true"> 
+		    <div class="stream-item-content tweet js-actionable-tweet js-stream-tweet stream-tweet favorited  " data-is-reply-to="false" data-tweet-id="<%=h weibo.id %>" data-item-id="<%=h weibo.id %>" data-screen-name="<%=h weibo.user.screen_name %>" data-user-id="<%=h weibo.user.id %>">
+		      <div class="tweet-image">
+				    <a  onclick="open_user_pane(<%=h weibo.user.id %>);" rel="details_pane" href="javascript:void(0)" title="<%=h weibo.user.screen_name %>">
+				      <img width="50" height="50" src="<%=h weibo.user.profile_image_url %>" alt="<%=h weibo.user.screen_name %>" title="<%=h weibo.user.screen_name %>"></a>
+				 </div> 
+				 <div class="tweet-content">
+    				<div class="tweet-row">
+					   <span class="tweet-user-name">
+					     <a style="padding-left:0" class="icon-bg icon-female" onclick="open_user_pane(<%=h weibo.user.id %>);" rel="details_pane" href="javascript:void(0)" title="<%=h weibo.user.screen_name %>"><%=h weibo.user.screen_name %> </a>
+					   </span>
+				   </div>
+				   <div class="tweet-row">
+				      <div class="tweet-text js-tweet-text"> <%=h weibo.text %> </div>
+				   </div>
+				    <div class="tweet-row">  
+					   <div class="feed-info">
+					   		<p><%=h DateTime.parse(weibo.created_at).strftime("%m月%d日  %H:%M:%S") %> | <a href="javascript:void(0)" onclick="open_weibo_pane(<%=h weibo.id %>,'repost')">转发</a>|<a href="javascript:void(0)" onclick="open_weibo_pane(<%=h weibo.id %>,'comment')" rel="l:cm">评论</a>    </p>
+					   </div>   
+					 </div>
+				</div>
+</div>
+</div>
+<!--单条微博 结束-->       
+		  <% end %>
+		  </div>
+  </div></div></div></div>
+   <% else %>
+   <span>暂无评论</span>
+   <% end %>   
+<script>
+$(document).ready(function(){
+	$("#butsend").click(function(e){
+		var txtwbid = $("#wbid").val();
+		var txtrepost = $("#txtrepost").val();
+		var txttype = $("#typetxt").val();
+		var strhost = window.location.host;
+	    var strprotocol = window.location.protocol;
+	    var strurl = strprotocol + "//" + strhost + "/messages/repost_message"
+		//alert(txttype);
+		$.ajax({
+			type: 'POST',
+			    url: strurl,
+			    data: {"wbid":txtwbid,"repost":txtrepost,"type":txttype },
+			    contentType: 'multipart/form-data',
+			    datatype: 'json',
+			    success:function(data)
+			    {
+			    	//alert(data);
+			    },
+			    error:function(xhr,r,e)
+			    {
+			    	alert(e)
+			    }
+		    });
+	});
+});
+</script>

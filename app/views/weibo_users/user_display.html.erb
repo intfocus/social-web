@@ -1,0 +1,53 @@
+<% @i = 0 %>
+<% @userselect.each do |userselect| %>
+  <ul>
+  	<li>是否关注</li>
+  	<li><%=h @friendship[@i] %></li>
+  	<li>用户UID:</li>
+  	<li><%=h userselect.id %></li>
+  	<li>用户昵称 </li>
+  	<li><%=h userselect.screen_name %></li>
+  	<li>友好显示名称 </li>
+  	<li><%=h userselect.name %></li>
+  	<li>用户所在地区ID</li>
+  	<li><%=h userselect.province %></li>
+  	<li>用户所在城市ID </li>
+  	<li><%=h userselect.city %></li>
+  	<li>用户所在地 </li>
+  	<li><%=h userselect.location %></li>
+  	<li>用户描述 </li>
+  	<li><%=h userselect.description %></li>
+  	<li>用户博客地址</li>
+  	<li><a href="<%=h userselect.url %>">博客地址</a></li>
+  	<li>用户头像地址 </li>
+  	<li><img src="<%=h userselect.profile_image_url %>" /></li>
+  	<li>用户的个性化域名 </li>
+  	<li><%=h userselect.domain %></li>
+  	<li>性别</li>
+  	<li><%=h userselect.gender=="m"?"男":"女" %></li>
+  	<li>粉丝数</li>
+  	<li><%=h userselect.followers_count %></li>
+  	<li>关注数 </li>
+  	<li><%=h userselect.friends_count %></li>
+  	<li>微博数 </li>
+  	<li><%=h userselect.statuses_count %></li>
+  	<li>收藏数 </li>
+  	<li><%=h userselect.favourites_count %></li>
+  	<li>创建时间 </li>
+  	<li><%=h DateTime.parse(userselect.created_at).strftime("%Y年%m月%d日  %H:%M:%S") %></li>
+  	<% if userselect.status %>
+  	  <ul>
+  		<li>微博创建时间</li>
+  		<li><%=h DateTime.parse(userselect.status.created_at).strftime("%Y年%m月%d日  %H:%M:%S") %></li>
+  		<li>微博ID</li>
+  		<li><%=h userselect.status.id %></li>
+  		<li>微博内容</li>
+  		<li><%=h userselect.status.text %></li>
+  		<li>微博来源</li>
+  		<li><%= userselect.status.source.html_safe %></li>
+  	  </ul>
+  	<% end %>
+  </ul>
+  <hr />
+  <% @i += 1 %>
+<% end %>

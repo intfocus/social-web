@@ -52,7 +52,7 @@ label {
 
 // Shift over the inside div to align all label's relevant content
 form .input {
-  margin-left: 150px;
+  margin-left: 140px;
 }
 
 // Checkboxs and radio buttons
@@ -249,7 +249,12 @@ select.xxlarge {
 textarea.xxlarge {
   overflow-y: auto;
 }
-
+.input-full,
+input.full,
+textarea.full {
+  width: 280px;
+  height:20px;
+}
 // Grid style input sizes
 // This is a duplication of the main grid .columns() mixin, but subtracts 10px to account for input padding and border
 @mixin formColumns($columnSpan: 1 ) {

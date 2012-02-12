@@ -32,10 +32,10 @@ $baseline:          18px;
 // Griditude
 // Modify the grid styles in mixins.scss
 $gridColumns:       16;
-$gridColumnWidth:   40px;
-$gridGutterWidth:   20px;
+$gridColumnWidth:   42px;
+$gridGutterWidth:   19px;
 $extraSpace:        ($gridGutterWidth * 2); // For our grid calculations
-$siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+$siteWidth:         ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1)) + 3px;
 
 // Color Scheme
 // Use this to roll your own color schemes if you like (unused by Bootstrap by default)

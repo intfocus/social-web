@@ -33,7 +33,7 @@
 }
 .dashboard{
   width:300px;
-  background: rgba(218, 236, 244, 0.9);
+//  background: rgba(218, 236, 244, 0.9);
   position:relative;
   padding:12px 20px;
   padding-right:18px\9;
@@ -59,7 +59,7 @@
   position: relative;
   width: 960px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 ;
   _position: static;
   _width: 320px;
   _padding: 0;
@@ -153,7 +153,7 @@
   padding: 20px 20px 20px 20px;
   font-size: 18px;
   left:47%; 
-  top:50%;
+  top:300px;
   z-index: 1000;
   filter: alpha(opacity=80);
   -khtml-opacity: 0.8;
@@ -184,7 +184,7 @@
 }
 .tweet-image {
 float:left;
-height:98px;
+height:75px;
 overflow:hidden;
 width:58px;
 margin-top:3px;
@@ -192,7 +192,7 @@ margin-top:3px;
 
 .tweet-content {
 margin-left:58px;
-min-height:48px;
+min-height:60px;
 }
 
 .stream-tweet.withheld-tweet .tweet-content {
