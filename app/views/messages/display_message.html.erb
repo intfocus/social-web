@@ -1,0 +1,155 @@
+<!--微博外包装 -->
+  <div class="stream-manager js-stream-manager-container">
+  <div class="js-stream-manager" id="profile-stream-manager"><div class="stream-title"></div><div class="stream-container"><div class="stream ">
+  <div class="js-stream-items stream-items" id="stream-items-id">
+		<% if @strmessage != nil && @strmessage != "" %>
+		  <% @strmessage.each do |weibo| %>
+		  <!--单条微博 -->
+		    <div class="js-stream-item stream-item" data-item-id="<%=h weibo.id %>" data-item-type="tweet" media="true"> 
+		    <div class="stream-item-content tweet js-actionable-tweet js-stream-tweet stream-tweet favorited  " data-is-reply-to="false" data-tweet-id="<%=h weibo.id %>" data-item-id="<%=h weibo.id %>" data-screen-name="<%=h weibo.user.screen_name %>" data-user-id="<%=h weibo.user.id %>">
+		      <div class="tweet-image">
+				    <a  onclick="open_user_pane(<%=h weibo.user.id %>);" rel="details_pane" href="javascript:void(0)" title="<%=h weibo.user.screen_name %>">
+				      <img width="50" height="50" src="<%=h weibo.user.profile_image_url %>" alt="<%=h weibo.user.screen_name %>" title="<%=h weibo.user.screen_name %>"></a>
+				       <% if weibo.user.following %>
+				      <p>已关注</p>
+				      <% else %>
+				     <p><a href="javascript:void(0)" id="fl<%=h weibo.user.id %>"  onclick="add_follow('fl',<%=h weibo.user.id %>);" class="addfollow-btn">添加关注</a></p> 
+				    
+				      <% end %>
+				      
+				 </div> 
+				 <div class="tweet-content">
+    				<div class="tweet-row">
+					   <span class="tweet-user-name">
+					     <a style="padding-left:0" class="icon-bg icon-female" onclick="open_user_pane(<%=h weibo.user.id %>);" rel="details_pane" href="javascript:void(0)" title="<%=h weibo.user.screen_name %>">
+					     	<%=h weibo.user.screen_name %> </a>
+					   </span>
+				   </div>
+				   <div class="tweet-row">
+				      <div class="tweet-text js-tweet-text"> <%=h weibo.text %> </div>
+				   </div>
+				   <% if weibo.thumbnail_pic %>
+				   		<div class="tweet-row">
+				   		<div class="preview-img">     
+				         <div class="feed-img">      <img class="zoom-move" src="<%=h weibo.thumbnail_pic %>" rel="e:zi,fw:0"></div>    <!--<a href="<%=h weibo.original_pic %>" target="_blank" >原始图片-->
+				       </div>   
+				     </div>
+		         <% end %>
+				    <% if weibo.retweeted_status %>
+				    <div class="tweet-row">
+					   <div class="box-style">  
+						     <div class="forward box-content">   
+						       <p><a href="javascript:void(0)" onclick="open_user_pane(<%=h weibo.retweeted_status.user.id %>)"><%=h weibo.retweeted_status.user.screen_name %></a>
+						       ：<%=h weibo.retweeted_status.text %>
+						          <span><a href="javascript:void(0)" onclick="open_weibo_pane(<%=h weibo.retweeted_status.id %>,'repost')">原文转发</a>|<a href="javascript:void(0)" onclick="open_weibo_pane(<%=h weibo.retweeted_status.id %>,'comment')" rel="l:cm">原文评论</a></span>     
+						       </p>       
+				    	  <% if weibo.retweeted_status.thumbnail_pic %>
+						       <div class="preview-img">     
+						         <div class="feed-img">      <img class="zoom-move" src="<%=h weibo.retweeted_status.thumbnail_pic %>" rel="e:zi,fw:0"></div>    
+						       </div>   
+				    	  <% end %> 
+						     </div>    
+						   </div>
+						 </div>
+				    <% end %>
+				    <div class="tweet-row">  
+					   <div class="feed-info">
+					   		<p><%=h DateTime.parse(weibo.created_at).strftime("%m月%d日  %H:%M:%S") %> | <a href="javascript:void(0)" onclick="open_weibo_pane(<%=h weibo.id %>,'repost')">转发</a>|<a href="javascript:void(0)" onclick="open_weibo_pane(<%=h weibo.id %>,'comment')" rel="l:cm">评论</a>    </p>
+					   </div>   
+					 </div>
+					             </div>
+</div>
+</div>
+<!--单条微博 结束-->       
+		  <% end %>
+		  </div>
+  </div></div></div></div>
+		<% else %>
+		<ul>
+		  <li><input type="button" id="btnmonitor" value="选中的监控" /></li>
+		  <% @strselectmessage.each do |selectmessage| %>
+		    <li>微博ID </li>
+		    <li><%=h selectmessage.WID %></li>
+		    <li>微博信息内容 </li>
+		    <li><%=h selectmessage.wtext %></li>
+		    <li>微博来源 </li>
+		    <li><%= simple_format(selectmessage.source) %></li>
+		    <li>创建时间 </li>
+		    <li><%=h selectmessage.created_w %></li>
+		    <li>微博用户</li>
+		    <li><%=h selectmessage.wuser_id%></li>
+		    <li>用户昵称 </li>
+		    <li><%=h selectmessage.screen_name%></li>
+		    <li>友好显示名称</li>
+		    <li><%=h selectmessage.user_name%></li>
+		    <li>用户所在地 </li>
+		    <li><%=h selectmessage.user_location%> </li>
+		    <li>用户头像地址 </li>
+		    <li><img src="<%=h selectmessage.profile_image_url %>" /></li>
+		    <li><a href="/messages/edit_message?wbid=<%=h selectmessage.WID %>&type=repost">转发</a></li>
+		    <li><a href="/messages/edit_message?wbid=<%=h selectmessage.WID %>&type=comment">评论</a></li>
+		    <li>
+		    	<%if selectmessage.monitor == 1 %>
+		    	  <input type="checkbox" name="checkbox" checked  value="<%=h selectmessage.WID %>" />监控
+		    	<% else %>
+		    	  <input type="checkbox" name="checkbox"  value="<%=h selectmessage.WID %>" />监控
+		    	<% end %>
+		    </li>
+	</ul>
+		    <hr />
+		  <% end %>
+		  <% end %>
+
+</div>
+<script>
+$(document).ready(function(){
+	$("#btnmonitor").click(function(e){
+		var strtrue="";
+		var strfalse="";
+        $("[name='checkbox']").each(function(){
+	      if($(this).attr("checked"))
+	      {
+            //strtrue+=$(this).val()+",";
+            updatemonitor($(this).val(),1);
+	      }
+	      else
+	      {
+	      	updatemonitor($(this).val(),0);
+	      }
+        });
+        //strtrue = strtrue.substring(0,strtrue.length-1)
+		//updatemonitor(strtrue);
+		//$("[name='checkbox']").each(function(){
+	    //  if(!$(this).attr("checked"))
+	    //  {
+        //    strfalse+=$(this).val()+",";
+	    //  }
+        //});
+        //strfalse = strfalse.substring(0,strfalse.length-1)
+		//updatemonitor(strfalse);
+		
+		function updatemonitor(wbid,num)
+		{
+			var strhost = window.location.host;
+	        var strprotocol = window.location.protocol;
+	        var strurl = strprotocol + "//" + strhost + "/messages/save_update"
+			$.ajax({
+			type: 'POST',
+			    url: strurl,
+			    data: {"wbid":wbid,"strtype":"monitor","strnum":num },
+			    contentType: 'multipart/form-data',
+			    datatype: 'json',
+			    success:function(data)
+			    {
+			    	alert(data);
+			    },
+			    error:function(xhr,r,e)
+			    {
+			    	alert(e)
+			    }
+		    });
+		}
+	});
+});
+
+</script>

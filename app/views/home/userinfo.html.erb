@@ -1,0 +1,125 @@
+<%= javascript_include_tag "/javascripts/libs/jquery-1.7.1.min.js" %>
+<%= javascript_include_tag "/javascripts/userinfo.js" %>
+<div>
+	<input type="hidden" id="txtuserid" />
+	<ul>
+		<li class="gray6">登录名：</li>
+        <ll class="font_12">
+        	<em id="useremail">
+        		<% if user_signed_in? %>
+        		  <%=h current_user.email %>
+        		<% end %>
+        	</em>
+        	&nbsp;&nbsp;&nbsp;<a href="/users/edit" target="_self">修改密码</a>
+		</li>
+		<li class="gray6">
+			<em class="error_color">*</em> 昵&nbsp;&nbsp;称：
+		</li>
+		<li>
+			<input type="text" class="PY_input" value="" name="nickname" id="nickname">
+		</li>
+        <li>真实姓名：</li>
+        <li>
+        	<input type="text" class="PY_input" name="realname" id="realname" value="">
+        </li>
+        <li>
+        	<select class="info_tabTip" name="pub_name" id="pub_name_option">
+        		<option value="2" >所有人可见</option>
+        		<option value="1" >我关注的人可见</option>
+        		<option value="0" >仅自己可见</option>
+        	</select>
+        </li>
+        <li class="gray6">
+        	<em class="error_color">*</em> 所在地：
+        </li>
+        <li class="info_tab_vm">
+        	<select name="province" id="province" ></select> 
+            <select name="city" id="city" ></select>
+        </li>
+        <li class="gray6"><em class="error_color">*</em> 性&nbsp;&nbsp;别：</th></li>
+        <li class="info_tab_vm">
+        	<input id="man" name="gender" type="radio" value="1" class="info_radio01">
+        	<label for="man">男</label>
+        	&nbsp;&nbsp;&nbsp;&nbsp;
+        	<input id="woman" name="gender" type="radio" value="2" class="info_radio01" >
+        	<label for="woman">女</label>
+        </li>
+        <li class="gray6">生日：</li>
+        <li class="info_tab_vm birthDay" id="birthday">
+        	<select id="Date_Year">
+            </select><em>年</em>
+            <select id="Date_Month" init_value="00" >
+            </select><em>月</em>
+            <select id="Date_Day" name="birthday_d"  value="00" init_value="00"></select><em>日</em>
+        </li>
+        <li id="birthdaytip">
+        	<select class="info_tabTip" name="pub_birthday" id="pub_birthday_option">
+        		<option value="0" >公开,完整显示</option>
+                <option value="3" >只显示星座</option>
+                <option value="2" >只显示月日</option>
+                <option value="1" >保密</option>
+            </select>
+        </li>           
+        <li class="gray6">博客地址：</li>
+        <li>
+        	<input type="text" class="PY_input" id="blog" name="blog" value=""/>
+            <p id='blogInfoTip' class="font_12">还没有博客？
+            	<a href="http://control.blog.sina.com.cn/reg/reg_blog.php?version=7">立即开通</a>
+            </p>
+        </li>
+        <li id="blogtip">
+        	<select name="pub_blog" id="pub_blog">
+        		<option value="0" >所有人可见</option>
+                <option value="1" >我关注的人可见</option>
+                <option value="2" >仅自己可见</option>
+            </select>
+        </li>
+        <li class="gray6">联系邮箱：</li>
+        <li>
+        	<p class="info_tabTip">
+        		<span id="favorite_email" ></span>
+        		<a href="javascript:void(0);" id="modify_email"> 修改</a>
+        		<input type="hidden" id="email" name="cmail" value="" class="PY_input" />
+        	</p>
+        </li>
+        <li id="red_email" style="vertical-align: top;">
+        	<select name="pub_email" id="pub_email_option">
+        		<option value="2" >所有人可见</option>
+                <option value="0" >我关注的人可见</option>
+                <option value="1" >仅自己可见</option>
+            </select>
+        </li>
+        <li class="gray6">QQ：</li>
+        <li>
+        	<input type="text" id="qq" name="qq" value="" class="PY_input">
+            <span class="co_kd2" style="display:none"></span>
+        </li>
+        <li id="red_qq" style="vertical-align: top;">
+        	<select name="pub_qq" id="pub_qq_option">
+        		<option value="2" >所有人可见</option>
+                <option value="0" >我关注的人可见</option>
+                <option value="1" >仅自己可见</option>
+            </select>
+        </li>
+        <li class="gray6">MSN：</li>
+        <li>
+        	<input type="text" id="msn" name="msn" value="" class="PY_input">
+            <span class="co_kd2" style="display:none"></span>
+        </li>
+        <li id="red_msn" style="vertical-align: top;">
+        	<select name="pub_msn" id="pub_msn_option">
+        		<option value="2" >所有人可见</option>
+                <option value="0" >我关注的人可见</option>
+                <option value="1" >仅自己可见</option>
+            </select>
+        </li>
+        <li class="gray6">一句话介绍：</li>
+        <li>
+        	<textarea name="mydesc" id="mydesc" class="info_txtarea"></textarea>
+        	<span class="co_kd2" style="display:none"></span>
+        </li>
+	</ul>
+</div>
+<div class="MIB_btn">
+	<a href="javascript:void(0);" id="submit" class="newabtngrn"><em>保存</em></a>
+</div>

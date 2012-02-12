@@ -1,0 +1,18 @@
+		    <div class="js-stream-item stream-item" data-item-id="<%= @weibo_user.id %>" data-item-type="tweet" media="true"> 
+		    <div class="stream-item-content tweet js-actionable-tweet js-stream-tweet stream-tweet favorited  " data-is-reply-to="false">
+    	      <div class="tweet-image">
+				      <img width="50" height="50" src="<%= @weibo_user.profile_image_url %>" alt="<%= @weibo_user.screen_name %>" title="<%= @weibo_user.screen_name %>">
+				    <p><a href="/" rel="e:fl,t:1" class="addfollow-btn">Ìí¼Ó¹Ø×¢</a></p>
+				 </div> 
+				 <div class="tweet-content">
+    				<div class="tweet-row">
+					   <span class="tweet-user-name">
+					     <%= @weibo_user.screen_name %>
+					   </span>
+				   </div>
+				   <div class="tweet-row">
+				      <div class="tweet-text js-tweet-text"><%= @weibo_user.location %></div>
+				   </div>
+            </div>
+			</div>
+			</div>

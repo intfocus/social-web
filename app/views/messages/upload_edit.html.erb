@@ -1,0 +1,73 @@
+<%= javascript_include_tag "/javascripts/libs/jquery-1.7.1.min.js" %>
+<%= javascript_include_tag "/javascripts/Main.js" %>
+<%= javascript_include_tag "/javascripts/upload_edit.js" %>
+<%= stylesheet_link_tag    "/stylesheets/upload.css" %>
+<%= javascript_include_tag "/javascripts/imgmessage.js" %>
+<input type="hidden" id="txtid" value="<%=h @txtid %>">
+<div>
+	<ul>
+		<li>微博内容：</li><br /><br />
+		<li>
+			<textarea rows="3" cols="40" id="updatemessage" ><%=h @txtmessage %></textarea>
+		</li>
+	    <%if @imgf != "" && @imgf != nil %>
+		<li>上传图片：</li>
+		<li><img id="txtimgf" width='50' height='50' src='/<%=h @imgf %>' /></li>
+		<% end %>
+		<li>修改上传图片：</li>
+	    <li>
+		    <div style="display:none;">
+		    	<form id="uploadsubmit" accept-charset="UTF-8" action="/messages/upload" enctype="multipart/form-data" method="post">
+		    		<input id="img" name="img" size="40" type="file" />
+		    		<input id="strtxt" name="strtxt" type="hidden" value="/messages/upload_edit/<%=h @txtid %>" />
+		    		<input name="commit" type="submit" value="上传文件" />
+		    	</form>
+		    </div>
+		    <br />
+		    <input id="upload_img" type="button" value="上传图片" />
+	    </li>
+	    <li>
+			<select id="send_state">
+				<% if @txtisselected == 3 %>
+				<option value="3" selected="true">入库</option>
+				<% else %>
+				<option value="3">入库</option>
+				<% end %>
+				<% if @txtisselected == 2 %>
+				<option value="2" selected="true">定时</option>
+                <% else %>
+				<option value="2">定时</option>
+				<% end %>
+				<% if @txtisselected == 1 %>
+				<option value="1" selected="true">即时</option>
+				<% else %>
+				<option value="1">即时</option>
+				<% end %>
+			</select>
+		</li>
+		<li>
+			<% if @txtmonitor %>
+			<input type="checkbox" id="txtmonitor" checked="true" />监控
+			<% else %>
+			<input type="checkbox" id="txtmonitor" />监控
+			<% end %>
+		</li>
+	</ul>
+</div>
+<div id="dDeltxt" style="display: <%=h @txtisselected == 2? '':'none' %>">
+	<ul>
+		<li>
+			<div id="clock4"></div>
+		</li>
+		<li>
+			间隔时间为：<input type="text" id="txtclock" value="5" />分钟
+		</li>
+	</ul>
+</div>
+<div id="txtmessage">
+	<ul>
+		<li>
+			<input type="button" id="save_update" value="保  存" />
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,63 @@
+<%= javascript_include_tag "/javascripts/userrulemessage.js" %>
+<%= javascript_include_tag "/javascripts/test_message.js" %>
+<div>
+	<ul>
+		<li>规则名称：<input type="text" id="txtrulename"></li>
+		<li><input type="button" id="txtruleadd" value="添加规则" /></li>
+	</ul>
+</div>
+<% if @rulenum > 0 %>
+<input type="hidden" id="strruleid" value="<%=h @ruleonemessage.id%>" />
+<div id="strdiv">
+	<ul>
+		<li>规则名称：</li>
+		<li>
+			<input type="text" id="strrulename" value="<%=h @ruleonemessage.rulename%>" />
+		</li>
+		<li>关键字：</li>
+		<li>
+			<input type="text" id="strkeyword" value="<%=h @ruleonemessage.keyword%>" />
+		</li>
+		<li>用户名称：</li>
+		<li>
+			<input type="text" id="strusername" value="<%=h @ruleonemessage.username%>" />
+		</li>
+		<li>原创/转发：</li>
+		<li>
+			<select id="str_filter_ori">
+				<%if @ruleonemessage.filterori == 0 %>
+				<option value="0" selected="true" >全部</option>
+				<% else %>
+				<option value="0" >全部</option>
+				<% end %>
+				<%if @ruleonemessage.filterori == 4 %>
+				<option value="4" selected="true">转发</option>
+				<% else %>
+				<option value="4" >转发</option>
+				<% end %>
+				<%if @ruleonemessage.filterori == 5 %>
+				<option value="5" selected="true" >原创</option>
+				<% else %>
+				<option value="5" >原创</option>
+				<% end %>
+			</select>
+		</li>
+		<li>
+			<input type="button" id="strsave" value="保存" />
+			<input type="button" id="strclose" value="关闭" />
+		</li>
+	</ul>
+</div>
+<% end %>
+<div>
+	<input type="button" id="strselectbutton" value="用户/文字搜索">
+</div>
+<div>
+	<ul id="ruleselect">
+		<%@rulemessage.each do |rulemessage|%>
+		<li>规则名：</li>
+		<li><%=h rulemessage.rulename %></li>
+		<li><a href='/messages/userrule_message?id=<%=h rulemessage.id %>'>查看\修改</a></li>
+		<% end %>
+	</ul>
+</div>

@@ -1,0 +1,43 @@
+<div class="pane-components">
+    <div class="pane-components-inner tweet-components">
+    <div class="component"><div class="conversation">
+  <div class="related-tweets" data-related-impression-id="" data-related-group-name="" data-related-annotations="">
+          <div class="conversation-last-ancestor-tweet">
+  <div class="stream-item"> 
+    <% if @weibo_user != nil && @weibo_user != "" %>
+		  <!--用户信息 --> 
+		    <div class="stream-item" data-item-id="<%= @weibo_user.id %>" data-item-type="tweet" media="true"> 
+		    <div class="stream-item-content tweet stream-tweet favorited  " data-is-reply-to="false">
+    	      <div class="tweet-image" style="width:80px">
+				      <img width="80" height="80" src="<%= @weibo_user.profile_image_url %>" alt="<%= @weibo_user.screen_name %>" title="<%= @weibo_user.screen_name %>">
+				 </div> 
+				 <div class="tweet-content" style="padding:0 0 0 30px;">
+    				<div class="tweet-row">
+					   <h4>
+					     <%= @weibo_user.screen_name %>
+					   </h4>
+				   </div>
+				   <div class="tweet-row">
+				     <p><%= @weibo_user.location %> . <%= @weibo_user.gender == 'm' ? "男" : "女" %> </p>
+				   </div>
+				   <div class="tweet-row">
+				     <p> <span class="fansNum">关注：<strong><%= @weibo_user.friends_count %>  </strong>人</span>          <span class="fansNum">粉丝：<strong><%= @weibo_user.followers_count %> </strong>人</span>           
+				     <br/><span class="fansNum">微博：<strong><%= @weibo_user.statuses_count %> </strong>条</span></p>
+				   </div>
+            </div>
+				   <div>
+				     <p><%= @weibo_user.description %> </p>
+				     <div style="text-align: right;"><p> 
+				     	<% if @following %>
+				     	已关注
+				     	<% else %>
+				     	<a href="javascript:void(0)" id="sfl<%=h @weibo_user.id %>"  onclick="add_follow('sfl',<%=h @weibo_user.id %>);" class="addfollow-btn">添加关注</a>
+				     	<% end %>
+				     </p></div>
+				   </div>
+				   
+			</div>
+			</div>
+			<!-- 用户信息 结束-->       
+  <% end %>
+  </div></div></div></div></div></div></div>  

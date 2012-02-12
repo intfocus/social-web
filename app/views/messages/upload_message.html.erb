@@ -2,6 +2,7 @@
 <%= javascript_include_tag "/javascripts/Main.js" %>
 <%= javascript_include_tag "/javascripts/upload.js" %>
 <%= stylesheet_link_tag    "/stylesheets/upload.css" %>
+<%= javascript_include_tag "/javascripts/imgmessage.js" %>
 <br />
 <br />
 <br />
@@ -12,7 +13,16 @@
 			<textarea rows="3" cols="40" id="uploadmess" ></textarea>
 		</li>
 	    <li>
-		    <%=link_to "文件上传","/messages/img_message"%><p id="imagefile"><%=@imgf%></p>
+		    <div style="display:none;">
+		    	<form id="uploadsubmit" accept-charset="UTF-8" action="/messages/upload" enctype="multipart/form-data" method="post">
+		    		<input id="img" name="img" size="40" type="file" />
+		    		<input id="strtxt" name="strtxt" type="hidden" value="/messages/upload_message" />
+		    		<input name="commit" type="submit" value="上传文件" />
+		    	</form>
+		    </div>
+		    <br />
+		    <input id="upload_img" type="button" value="上传图片" />
+		    <p id="imagefile"><%=@imgf%></p>
 	    </li>
 	</ul>
 </div>
@@ -22,7 +32,17 @@
 			<div id="clock4"></div>
 		</li>
 		<li>
-			<input type="text" id="clock1" value="间隔时间为：5分钟" />
+			<input type="text" id="txtclock" value="间隔时间为：5分钟" />
+		</li>
+		<li>
+			<select id="send_state">
+				<option value="3" selected="true">入库</option>
+				<option value="2">定时</option>
+				<option value="1">即时</option>
+			</select>
+		</li>
+		<li>
+			<input type="checkbox" id="txtmonitor" checked="true" />监控
 		</li>
 	</ul>
 </div>
@@ -33,7 +53,7 @@
 	  	<input type="checkbox" name="cb_all" id="cb_all" checked="true" />是否全选
 	  </li>
 	  <li>
-	  	<input type="button" id="btn5" value="获得没选中的所有值">
+	  	<input type="button" id="btn5" value="删除选中的微博">
 	  </li>
 	</ul>
 </div>
@@ -68,6 +88,9 @@
 	        	</div>
 	        </li>
 	        <% end %>
+	        <li>
+	        	<a target="_blank" href="/messages/upload_edit?id=<%=h strmes.id %>">修改</a>
+	        </li>
 	    </ul>
 	</div>
 	<% end %>

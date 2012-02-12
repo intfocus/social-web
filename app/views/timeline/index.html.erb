@@ -1,0 +1,97 @@
+         <div class="row">
+          <div class="main-content" style="width:620px;">
+            <div class="page-header">
+              <h2>页面标题 <small>Supporting text or tagline</small></h2>
+            </div>
+            <div class="stream-content">
+	            <h2>Main content</h2>
+	            <a href="#" class="btn danger" rel="popover"  data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A title">text</a>
+
+	            <p>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">bootstrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</p>
+
+		<!--   Alert   -->
+	  	<div class="alert-message warning fade in" data-alert="alert">
+            <a class="close" href="#">x</a>
+            <p><strong>Alert!</strong> warning fade in, Best check yo self, you隆炉re not looking too good.</p>
+          </div>
+          
+          <div id="my-modal" class="modal hide fade">
+            <div class="modal-header">
+              <a href="#" class="close">&times;</a>
+              <h3>Modal 标题</h3>
+            </div>
+            <div class="modal-body">
+              <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn primary">Primary</a>
+              <a href="#" class="btn secondary">Secondary</a>
+            </div>
+          </div>
+          <div id="modal-from-test" class="modal hide fade">
+            <div class="modal-header">
+              <a href="#" class="close">&times;</a>
+              <h3>Modal 标题</h3>
+            </div>
+            <div class="modal-body">
+              <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn primary">Primary</a>
+              <a href="#" class="btn secondary">Secondary</a>
+            </div>
+          </div>
+          <a class="btn" data-controls-modal="my-modal" data-backdrop="static" >Launch Modal</a>
+          
+          <button data-controls-modal="modal-from-test" data-backdrop="true" data-keyboard="true" class="btn danger">Launch Modal</button>
+          <br />
+          <a id="detail_id" rel="details_pane" class="btn primery">Details pane</a>
+  <%= high_chart("chart_id2", @jout) do |c| %>
+        <%= "options.tooltip.formatter = function() { return this.point.name + ': ' + this.percentage +' %百分比';}" %>
+        <%= "options.plotOptions.pie.dataLabels.formatter = function() { return this.point.name +': ' + this.percentage +' %';}" %>
+   <%end %>
+          </div>
+
+         </div> 
+         <div class="dashboard">
+            <p>The popover plugin provides a simple interface for adding popovers to your application. It extends the <a href="#twipsy">bootstrap-twipsy.js</a> plugin, so be sure to grab that file as well when including popovers in your project!</p>
+          </div>
+         <!--   details pane   --> 
+          <div id="details-pane-outer">
+			    <div class="details-pane-shell">
+              <div class="details-pane" id="details-pane" style="display: none; height: 585px; width: 350px; left: 593px; margin-top: 15px; -webkit-transition-property: none; ">
+    <div class="inner-pane active">
+				  <div class="pane-toolbar pane-built-in">
+				          <a class="pane-close toolbar-control " rel="pane_close" href="#">关闭 <span>×</span></a>
+				    <br style="clear: both">
+				  </div>
+					  <div id="pane-load">
+					  </div>
+			    </div>
+			  </div>
+			</div>
+	            <script>
+	            $(function () {
+	              $("a[rel=details_pane]")
+	                .click(function(e) {
+	                  $("#details-pane").css("display","block");
+	                  	$(document).ready(function(){
+								$("#details-pane").css("height",$(window).height() - 60);
+							});
+	                  $("#pane-load").load("/timeline/get_pane");
+	                })
+	            });
+	            $(function () {
+	              $("a[rel=pane_close]")
+	                .click(function(e) {
+	                  $("#details-pane").css("display","none");
+	                })
+	            });
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#details-pane").css("height",$(window).height() - 60);
+	})
+</script>
+			<!--   details pane  end --> 
+</div>

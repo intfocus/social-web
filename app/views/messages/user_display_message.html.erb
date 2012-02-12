@@ -1,0 +1,40 @@
+<div>
+	<% @user_select_message.each do |struser|%>
+	  <ul>
+		  <li>用户UID：</li>
+		  <li><%=h struser.UID %></li>
+		  <li>用户昵称：</li>
+		  <li><%=h struser.screen_name %></li>
+		  <li>友好显示名称：</li>
+		  <li><%=h struser.name %></li>
+		  <li>用户所在地区ID：</li>
+		  <li><%=h struser.province %></li>
+		  <li>用户所在城市ID：</li>
+		  <li><%=h struser.city %></li>
+		  <li>用户所在地：</li>
+		  <li><%=h struser.location %></li>
+		  <% if !struser.url == "" %>
+		    <li>用户博客地址：</li>
+		    <li><%=h struser.url %></li>
+		  <% end%>
+		  <li>用户头像地址：</li>
+		  <li><img src="<%=h struser.profile_image_url %>" /></li>
+		  <% if !struser.domain == "" %>
+		    <li>用户的个性化域名：</li>
+		    <li><%=h struser.domain %></li>
+		  <% end %>
+		  <li>性别：</li>
+		  <li><%=h (struser.gender == "m")?"男":"女" %></li>
+		  <li>粉丝数：</li>
+		  <li><%=h struser.followers_count %></li>
+		  <li>关注数：</li>
+		  <li><%=h struser.friends_count %></li>
+		  <li>微博数：</li>
+		  <li><%=h struser.statuses_count %></li>
+		  <li>收藏数：</li>
+		  <li><%=h struser.favourites_count %></li>
+		  <li>创建时间：</li>
+		  <li><%=h (struser.created_user+8*60*60).strftime("%Y年%m月%d日  %H:%M:%S") %> </li>
+	  </ul>
+	<% end %>
+</div>

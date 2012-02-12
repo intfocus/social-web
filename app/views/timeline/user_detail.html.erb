@@ -1,0 +1,29 @@
+<div class="pane-components">
+    <div class="pane-components-inner tweet-components">
+    <div class="component"><div class="conversation">
+  <div class="related-tweets" data-related-impression-id="" data-related-group-name="" data-related-annotations="">
+          <div class="conversation-last-ancestor-tweet">
+  <div class="stream-item js-stream-item">
+    <% if @strmessage != nil && @strmessage != "" %>
+		  <!--用户信息 -->
+		    <div class="js-stream-item stream-item" data-item-id="<%=h @strmessage.id %>" data-item-type="tweet" media="true"> 
+		    <div class="stream-item-content tweet js-actionable-tweet js-stream-tweet stream-tweet favorited  " data-is-reply-to="false">
+    	      <div class="tweet-image">
+				      <img width="50" height="50" src="<%=h @strmessage.profile_image_url %>" alt="<%=h @strmessage.screen_name %>" title="<%=h @strmessage.screen_name %>">
+				    <p><a href="/" rel="e:fl,t:1" class="addfollow-btn">添加关注</a></p>
+				 </div> 
+				 <div class="tweet-content">
+    				<div class="tweet-row">
+					   <span class="tweet-user-name">
+					     <%=h @strmessage.screen_name %>
+					   </span>
+				   </div>
+				   <div class="tweet-row">
+				      <div class="tweet-text js-tweet-text"><%=h @strmessage.location %></div>
+				   </div>
+            </div>
+			</div>
+			</div>
+			<!-- 用户信息 结束-->       
+  <% end %>
+  </div></div></div></div></div></div></div> 

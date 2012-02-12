@@ -8,11 +8,11 @@ $(document).ready(function(){
 			contentType: 'multipart/form-data',
 			success:function(reqContent)
 			{
-				alert("ok")
+				//alert("ok")
 			},
 			error:function(xhr,r,e)
 			{
-				alert(e)
+				//alert(e)
 			}
 		});
 		alert($("#uploadImg").val());

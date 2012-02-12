@@ -15,7 +15,11 @@ development:
   database: social-dev
   pool: 5
   username: root
+<<<<<<< HEAD
+  password: 
+=======
   password: 123456
+>>>>>>> upstream/master
   host: 127.0.0.1
 
 # Warning: The database defined as "test" will be erased and
@@ -28,7 +32,11 @@ test:
   database: social-test
   pool: 5
   username: root
+<<<<<<< HEAD
+  password: 
+=======
   password: 123456
+>>>>>>> upstream/master
   host: 127.0.0.1
 
 production:
@@ -38,5 +46,9 @@ production:
   database: social-web
   pool: 5
   username: root
+<<<<<<< HEAD
+  password: 
+=======
   password: 123456
+>>>>>>> upstream/master
   host: 127.0.0.1
