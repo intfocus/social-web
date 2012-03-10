@@ -49,7 +49,7 @@ group :development do
   gem 'rspec'
 end
 
-require 'v8'
+#require 'v8'
 gem 'execjs'
 gem 'therubyracer'
 gem 'lazy_high_charts', '~> 1.1.5' 
