@@ -13,8 +13,6 @@ gem "sinatra"
 gem "oauth"
 gem "json"
 gem "weibo", '0.0.11'
-gem 'delayed_job', '2.1.4'
-
 
 # Gems used only for assets and not required
 # in production environments by default.
